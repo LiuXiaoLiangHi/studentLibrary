@@ -1,32 +1,24 @@
+<!--
+ * @Author: liang
+ * @Date: 2022-03-04 08:44:08
+ * @LastEditors: liang
+ * @LastEditTime: 2022-03-04 10:08:38
+ * @Description: file content
+ * @FilePath: \作业\my-home\src\App.vue
+-->
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
 <style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  // background: url(~@/style/image/back.png);
+  background-size: 100%  100%;
+  height: 100%;
+  > div {
+    height: 100%;
   }
 }
 </style>

@@ -2,13 +2,20 @@
   "name": "my-home",
   "version": "0.1.0",
   "private": true,
+ 
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve-school": "cross-env API_TYPE=school vue-cli-service serve",
+    "serve-test": "cross-env API_TYPE=test vue-cli-service serve",
+    "json-serve": " json-server --watch --port 5000  ../db.json --routes ../router.json  -m ../middlewares.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "core-js": "^3.6.5",
+    "cross-env": "^7.0.3",
+    "element-ui": "^2.15.6",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
