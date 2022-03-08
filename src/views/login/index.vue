@@ -2,7 +2,7 @@
  * @Author: liang
  * @Date: 2022-03-04 09:49:40
  * @LastEditors: liang
- * @LastEditTime: 2022-03-04 22:50:12
+ * @LastEditTime: 2022-03-07 17:12:39
  * @Description: file content
  * @FilePath: \作业\my-home\src\views\login\index.vue
 -->
@@ -36,7 +36,7 @@
           @keyup.enter.native="login"
           v-model="loginForm.password"
           autoComplete="on"
-           show-password
+          show-password
           placeholder="请输入您的密码"
         ></el-input>
         <!-- <span class="show-pwd" @click="showPwd"
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { login } from '@/api/permission'
+import { login } from "@/api/permission";
 
 export default {
   data() {
@@ -100,22 +100,27 @@ export default {
   methods: {
     // 登录
     async login() {
-        try {
-            // console.log(this.loginForm);
-            //登录获取token
-            let data = await login({name:this.loginForm.username,password:this.loginForm.password})
-           
-            // //将data中的token 赋值给变量token
-            let token = data.token
-            
-            // //将token保持到store中
-            this.$store.commit('LOGIN_IN', token)
-            // //进行路由跳转
-            this.$router.replace('/')
-        } catch (e) {
-            console.log(e)
-        }
-    }
+      try {
+        // console.log(this.loginForm);
+        //登录获取token
+        let data = await login({
+          name: this.loginForm.username,
+          password: this.loginForm.password,
+        });
+
+        // //将data中的token 赋值给变量token
+        let token = data.token;
+
+        // //将token保持到store中
+        this.$store.commit("LOGIN_IN", token);
+        // //进行路由跳转
+        this.$router.replace("/").catch((err) => {
+          console.log(err);
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    },
   },
 };
 </script>

@@ -1,17 +1,17 @@
 /* 订单管理 */
 const Order = () => import('@/views/order-manage')
-// const OrderList = () => import('@/views/order-manage/order-list')
-// const ProductManage = () => import('@/views/order-manage/product-manage')
-// const ProductionList = () =>
-//     import('@/views/order-manage/product-manage/production-list')
-// const ReviewManage = () =>
-//     import('@/views/order-manage/product-manage/review-manage')
-// const ReturnGoods = () => import('@/views/order-manage/return-goods')
+const OrderList = () => import('@/views/order-manage/order-list')
+const ProductManage = () => import('@/views/order-manage/product-manage')
+const ProductionList = () =>
+    import('@/views/order-manage/product-manage/production-list')
+const ReviewManage = () =>
+    import('@/views/order-manage/product-manage/review-manage')
+const ReturnGoods = () => import('@/views/order-manage/return-goods')
 
 /* 产品管理 */
 const Goods = () => import('@/views/goods-manage')
-// const GoodsList = () => import('@/views/goods-manage/goods-list')
-// const GoodsClassify = () => import('@/views/goods-manage/goods-classify')
+const GoodsList = () => import('@/views/goods-manage/goods-list')
+const GoodsClassify = () => import('@/views/goods-manage/goods-classify')
 // 权限管理
 const Permission = () => import('@/views/permission')
 // const UserManage = () => import('@/views/permission/user-manage')
@@ -27,55 +27,55 @@ const dynamicRoutes = [
             name: '订单管理',
             icon: 'example'
         },
-        // children: [
-        //     {
-        //         path: 'list',
-        //         name: 'order-list',
-        //         component: OrderList,
-        //         meta: {
-        //             name: '订单列表',
-        //             icon: 'table'
-        //         }
-        //     },
-        //     {
-        //         path: 'product',
-        //         name: 'product-manage',
-        //         component: ProductManage,
-        //         meta: {
-        //             name: '生产管理',
-        //             icon: 'user'
-        //         },
-        //         children: [
-        //             {
-        //                 path: 'list',
-        //                 name: 'product-list',
-        //                 component: ProductionList,
-        //                 meta: {
-        //                     name: '生产列表',
-        //                     icon: 'table'
-        //                 }
-        //             },
-        //             {
-        //                 path: 'review',
-        //                 name: 'review-manage',
-        //                 component: ReviewManage,
-        //                 meta: {
-        //                     name: '审核管理',
-        //                     icon: 'eye'
-        //                 }
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         path: 'returnGoods',
-        //         name: 'return-goods',
-        //         component: ReturnGoods,
-        //         meta: {
-        //             name: '退货管理',
-        //             icon: 'nested'
-        //         }
-        //     }
-        // ]
+        children: [
+            {
+                path: 'list',
+                name: 'order-list',
+                component: OrderList,
+                meta: {
+                    name: '订单列表',
+                    icon: 'table'
+                }
+            },
+            {
+                path: 'product',
+                name: 'product-manage',
+                component: ProductManage,
+                meta: {
+                    name: '生产管理',
+                    icon: 'user'
+                },
+                children: [
+                    {
+                        path: 'list',
+                        name: 'product-list',
+                        component: ProductionList,
+                        meta: {
+                            name: '生产列表',
+                            icon: 'table'
+                        }
+                    },
+                    {
+                        path: 'review',
+                        name: 'review-manage',
+                        component: ReviewManage,
+                        meta: {
+                            name: '审核管理',
+                            icon: 'eye'
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'returnGoods',
+                name: 'return-goods',
+                component: ReturnGoods,
+                meta: {
+                    name: '退货管理',
+                    icon: 'nested'
+                }
+            }
+        ]
     },
     {
         path: '/goods',
@@ -85,26 +85,26 @@ const dynamicRoutes = [
             name: '产品管理',
             icon: 'user'
         },
-        // children: [
-        //     {
-        //         path: 'list',
-        //         name: 'goods-list',
-        //         component: GoodsList,
-        //         meta: {
-        //             name: '产品列表',
-        //             icon: 'table'
-        //         }
-        //     },
-        //     {
-        //         path: 'classify',
-        //         name: 'goods-classify',
-        //         component: GoodsClassify,
-        //         meta: {
-        //             name: '产品分类',
-        //             icon: 'tree'
-        //         }
-        //     }
-        // ]
+        children: [
+            {
+                path: 'list',
+                name: 'goods-list',
+                component: GoodsList,
+                meta: {
+                    name: '产品列表',
+                    icon: 'table'
+                }
+            },
+            {
+                path: 'classify',
+                name: 'goods-classify',
+                component: GoodsClassify,
+                meta: {
+                    name: '产品分类',
+                    icon: 'tree'
+                }
+            }
+        ]
     },
     {
         path: '/permission',

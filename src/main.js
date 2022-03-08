@@ -2,7 +2,7 @@
  * @Author: liang
  * @Date: 2022-03-04 08:44:08
  * @LastEditors: liang
- * @LastEditTime: 2022-03-06 17:28:50
+ * @LastEditTime: 2022-03-07 18:56:48
  * @Description: file content
  * @FilePath: \作业\my-home\src\main.js
  */
@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
 
       //如果与给定路由地址匹配的标准化的路由记录数组存在且不为0 &&  路由记录不需要进行 自动验证
       //则放行通过
-      console.log('to.matched',to.matched);
+      console.log('@1----to.matched',to.matched);
       if (to.matched.length > 0 && !to.matched.some(record => record.meta.requiresAuth)) {
           next()
       } else {
@@ -52,7 +52,7 @@ router.beforeEach((to, from, next) => {
       }
       //接下来处理 有token 的情况 
   } else {
-      console.log('token存在，进行验证');
+      console.log('@2---token存在，进行验证');
        // 如果store.state 的 permission 模块 内的所有路由
        // 为null既没有路由（初次登录）
       if (!store.state.permission.permissionList) {
@@ -76,7 +76,19 @@ router.beforeEach((to, from, next) => {
       }
   }
 })
-
+//后置路由  
+router.afterEach((to) => {
+    console.log('@3----后置路由触发');
+    //   与给定路由地址匹配的标准化的路由记录数组
+    //    后置路由 匹配的路由记录 可能会有多条
+    var routerList = to.matched
+   
+    // 设置面包屑
+    store.commit('setCrumbList', routerList)
+    
+    // 设置当前导航路由（当前路由）
+    store.commit('permission/SET_CURRENT_MENU', to.name)
+})
 
 new Vue({
   router,
