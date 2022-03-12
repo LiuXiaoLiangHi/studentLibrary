@@ -2,7 +2,7 @@
  * @Author: liang
  * @Date: 2022-03-04 08:44:08
  * @LastEditors: liang
- * @LastEditTime: 2022-03-04 22:22:21
+ * @LastEditTime: 2022-03-10 13:25:11
  * @Description: file content
  * @FilePath: \作业\my-home\src\router\index.js
  */
@@ -45,7 +45,8 @@ export const DynamicRoutes = [
         name: 'home',
         meta: {
           name: '首页',
-          icon: 'tree'
+          icon: 'fa fa-home',
+          iconColor:'color:#f0c02f',
         }
       }
     ]

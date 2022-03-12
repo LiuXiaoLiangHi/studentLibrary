@@ -45,9 +45,13 @@
       </div>
       <!-- 退出 -->
       <div class="quit-system" @click="loginOut">
-        <span class="iconfont icon-quit">
-          <img src="@/style/image/退出.png" alt="" width="24px" height="24px" />
-        </span>
+        <img
+          src="@/style/image/退出.png"
+          alt=""
+          width="24px"
+          height="24px"
+          style="margin-top: 12px"
+        />
       </div>
     </div>
   </aside>
@@ -80,10 +84,16 @@ export default {
 <style lang="less" scoped>
 // 头部样式
 .aside__top {
-  border-bottom: 1px solid #dcdfe6;
+  // border-bottom: 1px solid #dcdfe6;
   height: 50px;
   line-height: 50px;
-  background: #fff;
+  // background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
+  background-image: linear-gradient(
+    to right,
+    #3b41c5 0%,
+    #a981bb 49%,
+    #ffc8a9 100%
+  );
   z-index: 1000;
   // 固定定位
   position: fixed;
@@ -110,13 +120,13 @@ export default {
       transform: rotate(90deg);
     }
   }
-//右侧总体样式
+  //右侧总体样式
   .aside__top--right {
     position: absolute;
     right: 10px;
     top: -1px;
     bottom: 0px;
-    .quit-system{
+    .quit-system {
       height: 50px;
     }
     > div {
@@ -128,15 +138,7 @@ export default {
       padding: 0 15px;
       cursor: pointer;
 
-      &:hover::after {
-        transform-origin: 0 0;
-        transform: scaleX(1);
-      }
-      // 第一个div让左侧斜杠(边框)访问前消失
-      &:first-child:before {
-        border: none;
-      }
-      // 当前元素访问后下面出现红线
+      // 元素后添加蓝色底部线---因为scalex为0,所以不显示
       &::after {
         content: "";
         position: absolute;
@@ -144,11 +146,18 @@ export default {
         bottom: 0;
         width: 100%;
         height: 2px;
-        background: #ef4747;
+        background: blue;
         transform: scaleX(0);
-        transform-origin: right 0;
+        // transform-origin: right 0;
         transition: transform 0.5s;
       }
+
+      //元素访问后  蓝线缩放1赔
+      &:hover::after {
+        // transform-origin: 0 0;
+        transform: scaleX(1);
+      }
+      // 给两个div左侧加上竖杠
       &::before {
         content: "";
         position: absolute;
@@ -156,23 +165,14 @@ export default {
         top: 50%;
         left: -8px;
         margin-top: -10px;
-        border-left: 1px solid #ccc;
+        border-left: 1px solid rgb(167, 26, 26);
       }
-      &.email {
-        i {
-          position: absolute;
-          left: 18px;
-          top: -12px;
-          border-radius: 20px;
-          background: red;
-          color: #fff;
-          text-align: center;
-          font-size: 12px;
-          line-height: 1.5;
-          min-width: 20px;
-          min-height: 20px;
-        }
+      // 第一个div让左侧斜杠(边框)访问前消失
+      &:first-child:before {
+        border: none;
       }
+      //只有是aside__top--right下的user-masg有效
+      // 设置头像大小用户名称和文字对其
       &.user-msg {
         .user-img {
           width: 34px;
@@ -185,14 +185,10 @@ export default {
           padding: 0 4px;
         }
       }
-      .iconfont {
-        position: relative;
-        font-size: 24px;
-        color: #758eb5;
-      }
     }
   }
 }
+//设置面包屑动画
 .breadcrumb-enter,
 .breadcrumb-leave-active {
   opacity: 0;

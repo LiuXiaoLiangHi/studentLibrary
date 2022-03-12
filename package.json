@@ -2,7 +2,6 @@
   "name": "my-home",
   "version": "0.1.0",
   "private": true,
- 
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve-school": "cross-env API_TYPE=school vue-cli-service serve",
@@ -15,8 +14,11 @@
     "axios": "^0.26.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.3",
+    "echarts": "^5.3.1",
     "element-ui": "^2.15.6",
+    "gsap": "^2.0.2",
     "vue": "^2.6.11",
+    "vue-calendar-component": "^2.8.2",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },

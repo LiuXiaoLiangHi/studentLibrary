@@ -2,7 +2,7 @@
  * @Author: liang
  * @Date: 2022-03-07 18:32:22
  * @LastEditors: liang
- * @LastEditTime: 2022-03-07 20:58:51
+ * @LastEditTime: 2022-03-10 13:46:33
  * @Description: file content
  * @FilePath: \作业\my-home\src\components\dynamic-menu.vue
 -->
@@ -15,10 +15,12 @@
         :key='v.name'
       >
         <template slot='title'>
-          <!-- <i
+          <i
             class='iconfont'
             :class='v.meta.icon'
-          ></i> -->
+             :style="v.meta.iconColor"
+          ></i>
+          <!-- <i :class="v.meat.icon"></i> -->
           <!-- <svg-icon v-if="v.meta&&v.meta.icon" :icon-class="v.meta.icon"></svg-icon> -->
           <span>{{v.meta.name}}</span>
         </template>
@@ -32,10 +34,12 @@
         @click='gotoRoute(v.name)'
         v-else
       >
-        <!-- <i
+       <!-- <i :class="v.meat.icon"></i> -->
+        <i
           class='iconfont'
           :class='v.meta.icon'
-        ></i> -->
+          :style="v.meta.iconColor"
+        ></i>
         <!-- <svg-icon v-if="v.meta&&v.meta.icon" :icon-class="v.meta.icon"></svg-icon> -->
         <span slot='title'>{{v.meta.name}}</span>
       </el-menu-item>
@@ -54,6 +58,7 @@ export default {
             }
         }
     },
+     
     methods: {
         gotoRoute(name) {
             this.$router.push({ name })
@@ -63,9 +68,5 @@ export default {
 </script>
 
 <style lang='less'>
-.menu-container {
-  .svg-icon{
-    margin-right:10px;
-  }
-}
+
 </style>

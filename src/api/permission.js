@@ -2,7 +2,7 @@
  * @Author: liang
  * @Date: 2022-03-04 09:02:12
  * @LastEditors: liang
- * @LastEditTime: 2022-03-06 18:34:33
+ * @LastEditTime: 2022-03-12 08:47:52
  * @Description: file content
  * @FilePath: \作业\my-home\src\api\permission.js
  */
@@ -15,5 +15,4 @@ export function login(data) {
 // 得到 当前登录用户的信息
 export  function fetchPermission() {
      return  axios.get('/user/info')
-     
 }

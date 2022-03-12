@@ -2,13 +2,13 @@
  * @Author: liang
  * @Date: 2022-03-04 09:49:40
  * @LastEditors: liang
- * @LastEditTime: 2022-03-07 17:12:39
+ * @LastEditTime: 2022-03-10 12:33:34
  * @Description: file content
  * @FilePath: \作业\my-home\src\views\login\index.vue
 -->
 <template>
   <div class="login-container">
-    <img src="@/style/image/back.png" alt="" class="login_background" />
+    <img src="@/style/image/back.png" alt=""  class="login_background" />
     <!-- autoComplete="on" 让表单启用自动填充 -->
     <el-form
       class="login-form"
@@ -50,6 +50,7 @@
           :loading="loading"
           @click.native.prevent="login"
         >
+        
           登录
         </el-button>
       </el-form-item>
@@ -132,18 +133,18 @@ export default {
   width: 100%;
   height: 980px;
   .login_background {
-    position: absolute;
+    position: relative;
     left: 0px;
     top: 0px;
     z-index: -1;
-    width: 1745px;
-    height: 900px;
+    width: 100%;
+    height: 100%;
   }
   .login-form {
     width: 400px;
     position: absolute;
-    top: 400px;
-    left: 977px;
+    top: 45%;
+    left: 57%;
     .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.1);

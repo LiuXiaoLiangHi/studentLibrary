@@ -2,7 +2,7 @@
  * @Author: liang
  * @Date: 2022-03-04 08:44:08
  * @LastEditors: liang
- * @LastEditTime: 2022-03-04 10:08:38
+ * @LastEditTime: 2022-03-09 15:34:00
  * @Description: file content
  * @FilePath: \作业\my-home\src\App.vue
 -->
@@ -14,7 +14,7 @@
 
 <style lang="less">
 #app {
-  // background: url(~@/style/image/back.png);
+
   background-size: 100%  100%;
   height: 100%;
   > div {

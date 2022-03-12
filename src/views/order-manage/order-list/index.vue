@@ -1,11 +1,22 @@
+<!--
+ * @Author: liang
+ * @Date: 2022-03-07 20:45:55
+ * @LastEditors: liang
+ * @LastEditTime: 2022-03-10 19:23:30
+ * @Description: file content
+ * @FilePath: \作业\my-home\src\views\order-manage\order-list\index.vue
+-->
 <template>
   <div class="demo-image__lazy">
+     <el-backtop target=".demo-image__lazy"></el-backtop>
     <el-image
       v-for="url in urls"
       :key="url"
       :src="url"
       lazy
     ></el-image>
+    
+      
   </div>
 </template>
 
