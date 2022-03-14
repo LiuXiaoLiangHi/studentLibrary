@@ -1,10 +1,8 @@
+ 
 /*
  * @Author: liang
- * @Date: 2022-03-12 08:55:18
- * @LastEditors: liang
- * @LastEditTime: 2022-03-12 09:25:28
- * @Description: file content
- * @FilePath: \作业\my-home\src\store\modules\homeMessage.js
+ * @Description:用于存放home页面从后台接口获取的数据
+ *  
  */
 import { getMessage} from '@/api/homeList'
 export default {

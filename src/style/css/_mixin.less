@@ -1,4 +1,8 @@
-@mainColor:#151519;
+  /*
+   * 该文件存放的是混入的变量，共享属性
+   */
+
+@mainColor: #151519;
 
 @mixin table-center {
     display: table-cell;
@@ -27,6 +31,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+
     @else {
         display: -webkit-box;
         -webkit-line-clamp: $line;
@@ -35,5 +40,3 @@
         text-overflow: ellipsis;
     }
 }
-
-

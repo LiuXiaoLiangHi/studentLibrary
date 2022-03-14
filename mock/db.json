@@ -1,0 +1,46 @@
+{
+  "searchaccount": {
+
+    "code": "0",
+    "data": {
+      "name": "2018401",
+      "password": "123456"
+    },
+    "token": "sdfhjkldfhsdkjfhsdhfksjdfhjksdh"
+  },
+  "info": {
+    "code":"0",
+    "avatar": "https://ts1.cn.mm.bing.net/th?id=OIP-C.ug9M_rylVDzSq9VElI-dxgHaC7&w=183&h=170&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2",
+    "name": "admin",
+    "roles": ["admin"],
+    "data": ["index", "order-manage", "order-list", "product-manage", "product-list", "review-manage", "return-goods", "goods", "goods-list", "goods-classify", "permission" 
+    ,"students-management","students-statistical","students-classList","students-information",
+    "book-management","book-borrow","book-return","book-statistical",
+    "book-information","admin-management","admin-center",
+    "admin-permission","admin-userList","admin-set","systemSet"
+    ]
+  },
+  "getMessage":{
+    "code":0,
+    "data":[{
+      "message": "关于该系统版本更新情况",
+      "date": "08-05",
+      "subscribe" : "已读"
+    },
+    {
+      "message": "关于业务功能变更类公告规范",
+      "date": "08-04",
+      "subscribe": "已读"
+    },
+    {
+      "message": "关于应用上线公告规范",
+      "date": "08-03",
+      "subscribe" : "未读"
+    },
+    {
+      "message": "关于近期网络故障公告",
+      "date": "08-03",
+      "subscribe" : "已读"
+    }]
+  }
+}

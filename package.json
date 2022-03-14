@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "serve-school": "cross-env API_TYPE=school vue-cli-service serve",
     "serve-test": "cross-env API_TYPE=test vue-cli-service serve",
-    "json-serve": " json-server --watch --port 5000  ../db.json --routes ../router.json  -m ../middlewares.js",
+    "json-serve": " json-server --watch --port 5000  ./db.json --routes ./router.json  -m ./middlewares.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },

@@ -1,3 +1,9 @@
+<!--
+ * @Author: liang
+ * @Description:  home页面的echars组件
+-->
+ 
+ 
  <template>
   <div>
     <!-- echarts -->
@@ -5,7 +11,27 @@
   </div>
 </template>
 <script>
-import * as echarts from "echarts";
+import * as echarts from "echarts/core";
+import {
+  TitleComponent,
+  ToolboxComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+} from "echarts/components";
+import { LineChart } from "echarts/charts";
+import { UniversalTransition } from "echarts/features";
+import { CanvasRenderer } from "echarts/renderers";
+echarts.use([
+  TitleComponent,
+  ToolboxComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  LineChart,
+  CanvasRenderer,
+  UniversalTransition,
+]);
 import { formatDate } from "@/utils/formatDate.js";
 export default {
   data() {
@@ -29,7 +55,7 @@ export default {
       // 绘制图表
       myChart.setOption({
         title: {
-          text: "完成情况",
+          text: "任务完成情况",
         },
         tooltip: {
           trigger: "axis",

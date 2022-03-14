@@ -1,3 +1,9 @@
+<!--
+ * @Author: liang
+ * @Description: 主页的top栏结构样式
+  
+-->
+
 <template>
   <!-- 头部 top -->
   <aside class="aside__top">

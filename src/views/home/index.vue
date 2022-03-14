@@ -2,21 +2,21 @@
  * @Author: liang
  * @Date: 2022-03-04 16:26:31
  * @LastEditors: liang
- * @LastEditTime: 2022-03-12 14:12:29
+ * @LastEditTime: 2022-03-12 22:36:32
  * @Description: file content
  * @FilePath: \作业\my-home\src\views\home\index.vue
 -->
 <template>
   <div class="home">
+    <!-- 第一个卡片 -->
     <el-card class="card el-card-one">
       <div>
-        <!--  -->
+        <!---->
         <el-link :underline="false" class="home_link">
           <img src="@/style/image/我的任务.png" alt="" />
           <span>任务</span>
         </el-link>
       </div>
-      <!--  -->
       <div>
         <el-link :underline="false" href="" target="_blank" class="home_link">
           <img src="@/style/image/邮件_.png" alt="" />
@@ -39,7 +39,7 @@
       </div>
       <div>
         <el-link :underline="false" href="" target="_blank" class="home_link">
-          <span class="frequently-used">常用<br />功能</span>
+          <span class="usully-size">常用<br />功能</span>
         </el-link>
       </div>
       <!--  -->
@@ -55,6 +55,7 @@
         </el-link>
       </div>
     </el-card>
+     <!--第二个卡片-->
     <el-card class="card el-card-two">
       <div slot="header" class="two-header">
         <span>通知公告</span>
@@ -75,9 +76,9 @@
         </el-table-column>
       </el-table>
     </el-card>
-    <!--  -->
+    <!-- 第三个卡片 -->
     <div id="he-plugin-standard"></div>
-    <!--  -->
+    <!--第四个卡片-->
     <el-card class="card el-card-therr">
       <div slot="header" class="two-header">
         <span>待办事项</span>
@@ -98,6 +99,7 @@
         </el-table-column>
       </el-table>
     </el-card>
+    <!-- 第五个卡片 -->
     <el-card class="card el-card-four">
        <div slot="header" class="two-header">
         <span>邮件处理</span>
@@ -118,13 +120,16 @@
         </el-table-column>
       </el-table>
       
-       </el-card>
+    </el-card>
+    <!-- 第六个卡片 -->
     <el-card class="card el-card-five">
       <Calendar :sundayStart="true"></Calendar>
     </el-card>
+    <!-- 第七个卡片 -->
     <el-card class="card el-card-six">
       <chart></chart>
-       </el-card>
+    </el-card>
+    <!-- 右下角机器人 -->
     <robot></robot>
   </div>
 </template>
@@ -159,6 +164,7 @@ export default {
     chart
   },
   created() {
+    // 获取当前城市的天气情况
     window.WIDGET = {
       CONFIG: {
         layout: "1",
@@ -178,7 +184,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("homeMessage/GET_SOMEADVICE");
-    console.log(this.$store.state);
   },
   computed: {
     ...mapState(["homeMessage"]),
@@ -252,7 +257,8 @@ export default {
       background-color: #61a6df;
       width: 190px;
     }
-    .frequently-used {
+    // 常用功能这几个字的样式
+    .usully-size {
       margin-left: 37px;
       margin-top: 12px !important;
       font-size: 24px !important;

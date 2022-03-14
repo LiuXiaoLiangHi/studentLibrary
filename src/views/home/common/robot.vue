@@ -1,10 +1,6 @@
 <!--
  * @Author: liang
- * @Date: 2022-03-11 17:24:37
- * @LastEditors: liang
- * @LastEditTime: 2022-03-12 08:26:15
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\home\common\robot.vue
+ * @Description: home页面右下角机器人
 -->
 <template>
   <div @mousemove="coordinates" class="robot">
@@ -674,9 +670,6 @@ TweenMax.to("p", 0.5, {
    background: url('~@/style/image/恶犬.png') no-repeat;
    background-size: 50% 50%;
    background-position-x:-20px;
-   &:hover{
-  //  /  cursor: url('~@/style/image/我的狗骨头.png') pointer;
-   }
  }
  
 svg {

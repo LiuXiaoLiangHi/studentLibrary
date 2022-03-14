@@ -1,11 +1,7 @@
-// /*
-//  * @Author: liang
-//  * @Date: 2022-02-25 09:31:31
-//  * @LastEditors: liang
-//  * @LastEditTime: 2022-03-03 18:18:59
-//  * @Description:  权限数据模块
-//  * @FilePath: \vue-cli3.0-vueadmin\src\store\modules\permission.js
-//  */
+  /*
+   * @Author: liang
+   * @Description:  权限数据模块，用于存放用户信息及权限
+   */
 
 import { fetchPermission } from '@/api/permission'
 import router, { DynamicRoutes } from '@/router/index'
@@ -66,7 +62,6 @@ export default {
             // console.log('获取权限');
             let permissionList = await fetchPermission()
             // console.log(state);
-          
 //             //permissionList  当前登录用户的全部信息    
 //             // 头像 avatar: "https://randy168.com/1533262153771.gif"
 //             //当前所有的路由页面 （根据 用户权险改变）
@@ -96,12 +91,12 @@ export default {
 // /**
 // * @description:  children  由一级导航栏组成的对象[{home}{orede}] 
 // */
-            console.log('MainContainer', MainContainer);
+            // console.log('MainContainer', MainContainer);
 
             let children = MainContainer.children
             
-            console.log('children', children);
-            console.log('dynamicRouter', dynamicRouter);
+            // console.log('children', children);
+            // console.log('dynamicRouter', dynamicRouter);
 
 //             // 设置权限
 //             console.log('正在设置权限（完整权限，不管是什么用户----Array.length==4----）-----control_list');

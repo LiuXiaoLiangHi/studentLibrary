@@ -1,10 +1,10 @@
-/*
- * @Author: liang
- * @Date: 2022-03-12 14:54:05
- * @LastEditors: liang
- * @LastEditTime: 2022-03-12 16:22:25
- * @Description: file content
- * @FilePath: \作业\my-home\src\utils\formatDate.js
+
+/**
+ * @method: formatDat()
+ * @description:获取当前时间戳
+ * @param { tian:需要减的天数（Number）}
+ * @param { now:默认值时间对象Date}
+ * @return {年-月-日}
  */
 export function formatDate(tian, now = new Date) {
     var year = now.getFullYear();  //取得4位数的年份

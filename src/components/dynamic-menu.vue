@@ -1,14 +1,11 @@
 <!--
  * @Author: liang
- * @Date: 2022-03-07 18:32:22
- * @LastEditors: liang
- * @LastEditTime: 2022-03-10 13:46:33
- * @Description: file content
- * @FilePath: \作业\my-home\src\components\dynamic-menu.vue
+ * @Description: 左侧导航栏具体结构，通过递归方式快速生成结构
 -->
 <template>
   <div class='menu-container'>
     <template v-for='v in menuList'>
+      <!-- 有子路由在这渲染 -->
       <el-submenu
         :index='v.name'
         v-if='v.children&&v.children.length>0'
@@ -28,6 +25,7 @@
           <my-nav :menuList='v.children'></my-nav>
         </el-menu-item-group>
       </el-submenu>
+      <!-- 没有子路由在这渲染 -->
       <el-menu-item
         :key='v.name'
         :index='v.name'

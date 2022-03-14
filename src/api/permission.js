@@ -1,11 +1,8 @@
 /*
- * @Author: liang
- * @Date: 2022-03-04 09:02:12
- * @LastEditors: liang
- * @LastEditTime: 2022-03-12 08:47:52
- * @Description: file content
- * @FilePath: \作业\my-home\src\api\permission.js
- */
+ *  该文件存放的是得到用户信息方面的 api
+ *  
+*/
+
 // 引入封装的axios 
 import axios from '@/config/httpConfig.js'
 //登录 得到token

@@ -1,10 +1,7 @@
 <!--
  * @Author: liang
- * @Date: 2022-03-07 13:55:57
- * @LastEditors: liang
- * @LastEditTime: 2022-03-10 13:11:03
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\layout\component\left_side\leftSide.vue
+ * @Description:  主页面的左侧导航栏结构样式
+  
 -->
 <template>
     <el-menu
@@ -13,7 +10,6 @@
         text-color="#eee"
         active-text-color="#4dbcff"
         :default-active="currentMenu"
-       
     >
       <DynamicMenu :menuList="sidebarMenu"></DynamicMenu>
     </el-menu>
