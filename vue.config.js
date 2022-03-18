@@ -2,9 +2,9 @@
  * @Author: liang
  * @Date: 2022-02-21 15:00:38
  * @LastEditors: liang
- * @LastEditTime: 2022-03-05 13:34:55
+ * @LastEditTime: 2022-03-18 09:25:51
  * @Description: file content
- * @FilePath: \作业\my-home\vue.config.js
+ * @FilePath: \my-home\vue.config.js
  */
 const path = require('path');//引入path模块
 function resolve(dir) {
@@ -58,6 +58,32 @@ module.exports = {
             }
         },
         before: app => {}
+    },
+        // 调整内部的 webpack 配置。
+    // 查阅 https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/webpack.md
+    chainWebpack: config => {
+        // 移除 prefetch 插件,解决组件懒加载失效的问题
+        config.plugins.delete('prefetch')
+        // 添加新的svg-sprite-loader处理svgIcon
+        config.module
+            .rule('svgIcon')
+            .test(/\.svg$/)
+            .include.add(resolve('src/icons'))
+            .end()
+            .use('svg-sprite-loader')
+            .loader('svg-sprite-loader')
+            .tap(options => {
+                options = {
+                    symbolId: 'icon-[name]'
+                }
+                return options
+            })
+
+        // 原有的svg图像处理loader添加exclude
+        config.module
+            .rule('svg')
+            .exclude.add(resolve('src/icons'))
+            .end()
     },
 
 }

@@ -2,9 +2,9 @@
  * @Author: liang
  * @Date: 2022-03-04 08:44:08
  * @LastEditors: liang
- * @LastEditTime: 2022-03-07 18:56:48
+ * @LastEditTime: 2022-03-18 09:09:06
  * @Description: file content
- * @FilePath: \作业\my-home\src\main.js
+ * @FilePath: \my-home\src\main.js
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -18,7 +18,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from './config/httpConfig'
 // 引入样式
 import '@/style/css/index.less'
-
+//引入相关的icon图标
+import '@/icons'
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false

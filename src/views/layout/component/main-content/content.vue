@@ -1,5 +1,13 @@
 <!--
  * @Author: liang
+ * @Date: 2022-03-14 08:31:06
+ * @LastEditors: liang
+ * @LastEditTime: 2022-03-18 10:26:45
+ * @Description: file content
+ * @FilePath: \my-home\src\views\layout\component\main-content\content.vue
+-->
+<!--
+ * @Author: liang
  * @Description: 主页结构右侧视图层
  *  
 -->
@@ -19,8 +27,8 @@ export default {
 .content {
   padding: 20px;
   background-color: #ffffff;
-  border-radius: 45px;
   box-shadow: 0 8px 8px rgba(10, 16, 20, 0.24), 0 0 8px rgba(10, 16, 20, 0.12);
-  
+  min-width: 1640px;
+
 }
 </style>

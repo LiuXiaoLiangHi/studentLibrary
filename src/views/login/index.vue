@@ -1,157 +1,137 @@
 <!--
  * @Author: liang
- * @Date: 2022-03-04 09:49:40
+ * @Date: 2021-12-06 17:56:20
  * @LastEditors: liang
- * @LastEditTime: 2022-03-10 12:33:34
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\login\index.vue
+ * @LastEditTime: 2022-03-18 10:04:38
+ * @Description: 用户登录页面
+ * @FilePath: \my-home\src\views\login\index.vue
 -->
 <template>
-  <div class="login-container">
-    <img src="@/style/image/back.png" alt=""  class="login_background" />
-    <!-- autoComplete="on" 让表单启用自动填充 -->
-    <el-form
-      class="login-form"
-      autoComplete="on"
-      :model="loginForm"
-      :rules="loginRules"
-      ref="loginForm"
-      label-position="left"
-    >
-      <el-form-item prop="username">
-        <el-input
-          name="username"
-          type="text"
-          v-model="loginForm.username"
-          clearable
-          autoComplete="on"
-          placeholder="请输入您的用户名"
-        />
-      </el-form-item>
-      <el-form-item prop="password">
-        <el-input
-          name="password"
-          :type="pwdType"
-          clearable
-          @keyup.enter.native="login"
-          v-model="loginForm.password"
-          autoComplete="on"
-          show-password
-          placeholder="请输入您的密码"
-        ></el-input>
-        <!-- <span class="show-pwd" @click="showPwd"
-          ><svg-icon icon-class="eye"
-        /></span> -->
-      </el-form-item>
-      <el-form-item>
-        <el-button
-          type="primary"
-          style="width: 100%; background: #13c2aa"
-          :loading="loading"
-          @click.native.prevent="login"
+  <!-- 主体 -->
+  <div class="main">
+    <!-- 登录卡片 上 -->
+    <div class="Top_of_the_card"></div>
+    <!-- 登录卡片 -->
+    <el-card class="box-card">
+      <!-- 导航栏 -->
+      <!-- :default-active="activeIndex" -->
+      <el-menu class="el-menu-demo" mode="horizontal" style="border-bottom:solid 1px #EFEFEF">
+        <el-menu-item class="el-menu-item" @click="pass_change"
+          >免密码登录
+               <svg-icon icon-class="三角形" class="login_svg" v-show="login_svg"></svg-icon>
+          </el-menu-item
         >
-        
-          登录
-        </el-button>
-      </el-form-item>
-    </el-form>
+        <el-menu-item class="el-menu-item" @click="pass_change"
+          >密码登录
+            <svg-icon icon-class="三角形" class="login_svg" v-show="!login_svg"></svg-icon>
+          </el-menu-item
+        >
+        <img src="@/style/image/QR-Code.jpg" style="margin-left:108px"/>
+      </el-menu>
+      <!-- 内容区 -->
+      <el-container direction="vertical">
+        <!-- 登录方式显示区 -->
+        <el-main style="" class="el-main">
+          <noPassword v-show="pass_show" />
+          <PasswordToLogin v-show="!pass_show" />
+        </el-main>
+        <!-- 登录卡片 底部 其他内容 -->
+        <el-footer class="card_foot">
+          <!-- 协议文本展示区 -->
+          <div class="data_padding" style="margin-bottom:5px">
+            <span
+              >手机验证后自动登录，登录即代表同意
+              <a
+                href="https://homewh.chaoxing.com/agree/userAgreement?appId=900001"
+              >
+                《用户协议》
+              </a>
+              <a href="https://www.yidianzixun.com/landing_privacy">
+                《隐私保护指引》
+              </a>
+            </span>
+          </div>
+          <!-- hr分割线 -->
+          <hr color="#EBEBEB" sizi="1" width="95%" style="opacity: 0.8; margin:auto"/>
+          <!--第三方登录显示区-->
+          <div class="Login-socialLogin data_padding">
+            <span class="socialLoginFristSpan">社交账号登录</span>
+            <span class="Login-socialButtonGroup">
+              <div class="btn_none">
+                <img src="@/style/image/qq.jpg" alt="" />
+                <span>QQ</span>
+              </div>
+              <div class="btn_none">
+                <img src="@/style/image/weixin.jpg" alt="" />
+                <span>微信</span>
+              </div>
+              <div class="btn_none">
+                <img src="@/style/image/weibo.jpg" alt="" />
+                <span>微博</span>
+              </div>
+            </span>
+          </div>
+          <!-- 登录卡片 最底下区，联系作者和下载App -->
+          <div class="login_foot">
+            <div>
+              <i class="el-icon-s-promotion"></i>
+              <small>联系作者</small>
+            </div>
+            <!--  -->
+            <span class="Vertical_separation"></span>
+            <!--  -->
+            <div>
+              <i class="el-icon-download"></i>
+              <small>下载APP</small>
+            </div>
+          </div>
+        </el-footer>
+      </el-container>
+    </el-card>
   </div>
 </template>
-
-<script>
-import { login } from "@/api/permission";
-
+ 
+ <script>
+import noPassword from "./userLogin/noPassword.vue";
+import PasswordToLogin from "./userLogin/PasswordToLogin.vue";
+// import {createCode} from "@/api/createCode"
 export default {
+  components: {
+    noPassword,
+    PasswordToLogin,
+  },
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (value.length < 5) {
-        callback(new Error("请输入正确的用户名"));
-      } else {
-        callback();
-      }
-    };
-    const validatePass = (rule, value, callback) => {
-      if (value.length < 5) {
-        callback(new Error("密码不能小于5位"));
-      } else {
-        callback();
-      }
-    };
     return {
-      loginForm: {
-        username: "",
-        password: "",
-      },
-      loginRules: {
-        username: [
-          {
-            required: true,
-            trigger: "blur",
-            validator: validateUsername,
-          },
-        ],
-        password: [
-          { required: true, trigger: "blur", validator: validatePass },
-        ],
-      },
-      loading: false,
-      pwdType: "password",
+      pass_show: true,
+      login_svg:true
     };
   },
   methods: {
-    // 登录
-    async login() {
-      try {
-        // console.log(this.loginForm);
-        //登录获取token
-        let data = await login({
-          name: this.loginForm.username,
-          password: this.loginForm.password,
-        });
-
-        // //将data中的token 赋值给变量token
-        let token = data.token;
-
-        // //将token保持到store中
-        this.$store.commit("LOGIN_IN", token);
-        // //进行路由跳转
-        this.$router.replace("/").catch((err) => {
-          console.log(err);
-        });
-      } catch (e) {
-        console.log(e);
-      }
+    open1() {
+      const h = this.$createElement;
+      this.$notify({
+        title: "欢迎光临",
+        message: h(
+          "i",
+          { style: "color: teal" },
+          "这是你的系统"
+        ),
+      });
     },
+    pass_change() {
+      this.pass_show = !this.pass_show;
+       this.login_svg=!this.login_svg
+    },
+    //  getCode(){
+    //    createCode()
+    //  }
+  },
+  mounted() {
+    this.open1();
+    
   },
 };
 </script>
-
-<style lang="less">
-/* reset element-ui css */
-.login-container {
-  position: fixed;
-  width: 100%;
-  height: 980px;
-  .login_background {
-    position: relative;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-  }
-  .login-form {
-    width: 400px;
-    position: absolute;
-    top: 45%;
-    left: 57%;
-    .el-form-item {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      color: #454545;
-    }
-  }
-}
+<style lang="less" scoped>
+@import url(~@/style/css/login.less);
 </style>
- 

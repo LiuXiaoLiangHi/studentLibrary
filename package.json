@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "serve-school": "cross-env API_TYPE=school vue-cli-service serve",
     "serve-test": "cross-env API_TYPE=test vue-cli-service serve",
-    "json-serve": " json-server --watch --port 5000  ./db.json --routes ./router.json  -m ./middlewares.js",
+    "json-serve": " json-server --watch --port 5000  ./mock/db.json --routes ./mock/router.json  -m ./mock/middlewares.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -17,6 +17,7 @@
     "echarts": "^5.3.1",
     "element-ui": "^2.15.6",
     "gsap": "^2.0.2",
+    "svg-sprite-loader": "^6.0.11",
     "vue": "^2.6.11",
     "vue-calendar-component": "^2.8.2",
     "vue-router": "^3.2.0",
