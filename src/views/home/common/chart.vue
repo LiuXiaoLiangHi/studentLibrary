@@ -55,13 +55,13 @@ export default {
       // 绘制图表
       myChart.setOption({
         title: {
-          text: "任务完成情况",
+          text: "当前网站访问情况",
         },
         tooltip: {
           trigger: "axis",
         },
         legend: {
-          data: ["总任务", "已完成任务", "正在处理中任务"],
+          data: ["总访问次数", "本机访问次数", "其他ip访问次数"],
         },
         grid: {
           left: "3%",
@@ -92,19 +92,19 @@ export default {
         },
         series: [
           {
-            name: "总任务",
+            name: "总访问次数",
             type: "line",
             //   stack: 'Total',
             data: [10, 12, 8, 9, 11, 10, 10],
           },
           {
-            name: "已完成任务",
+            name: "本机访问次数",
             type: "line",
             //   stack: 'Total',
             data: [6, 7, 6, 8, 8, 10, 10],
           },
           {
-            name: "正在处理中任务",
+            name: "其他ip访问次数",
             type: "line",
             //   stack: 'Total',
             data: [4, 5, 2, 1, 3, 0, 0],

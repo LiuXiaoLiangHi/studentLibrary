@@ -2,9 +2,9 @@
  * @Author: liang
  * @Date: 2021-12-06 17:56:20
  * @LastEditors: liang
- * @LastEditTime: 2022-03-18 10:04:38
+ * @LastEditTime: 2022-04-06 17:37:33
  * @Description: 用户登录页面
- * @FilePath: \my-home\src\views\login\index.vue
+ * @FilePath: \作业\my-home\src\views\login\index.vue
 -->
 <template>
   <!-- 主体 -->
@@ -15,18 +15,28 @@
     <el-card class="box-card">
       <!-- 导航栏 -->
       <!-- :default-active="activeIndex" -->
-      <el-menu class="el-menu-demo" mode="horizontal" style="border-bottom:solid 1px #EFEFEF">
+      <el-menu
+        class="el-menu-demo"
+        mode="horizontal"
+        style="border-bottom: solid 1px #efefef"
+      >
         <el-menu-item class="el-menu-item" @click="pass_change"
           >免密码登录
-               <svg-icon icon-class="三角形" class="login_svg" v-show="login_svg"></svg-icon>
-          </el-menu-item
-        >
+          <svg-icon
+            icon-class="三角形"
+            class="login_svg"
+            v-show="login_svg"
+          ></svg-icon>
+        </el-menu-item>
         <el-menu-item class="el-menu-item" @click="pass_change"
           >密码登录
-            <svg-icon icon-class="三角形" class="login_svg" v-show="!login_svg"></svg-icon>
-          </el-menu-item
-        >
-        <img src="@/style/image/QR-Code.jpg" style="margin-left:108px"/>
+          <svg-icon
+            icon-class="三角形"
+            class="login_svg"
+            v-show="!login_svg"
+          ></svg-icon>
+        </el-menu-item>
+        <img src="@/style/image/QR-Code.jpg" style="margin-left: 108px" />
       </el-menu>
       <!-- 内容区 -->
       <el-container direction="vertical">
@@ -38,7 +48,7 @@
         <!-- 登录卡片 底部 其他内容 -->
         <el-footer class="card_foot">
           <!-- 协议文本展示区 -->
-          <div class="data_padding" style="margin-bottom:5px">
+          <div class="data_padding" style="margin-bottom: 5px">
             <span
               >手机验证后自动登录，登录即代表同意
               <a
@@ -52,7 +62,12 @@
             </span>
           </div>
           <!-- hr分割线 -->
-          <hr color="#EBEBEB" sizi="1" width="95%" style="opacity: 0.8; margin:auto"/>
+          <hr
+            color="#EBEBEB"
+            sizi="1"
+            width="95%"
+            style="opacity: 0.8; margin: auto"
+          />
           <!--第三方登录显示区-->
           <div class="Login-socialLogin data_padding">
             <span class="socialLoginFristSpan">社交账号登录</span>
@@ -103,7 +118,7 @@ export default {
   data() {
     return {
       pass_show: true,
-      login_svg:true
+      login_svg: true,
     };
   },
   methods: {
@@ -111,16 +126,12 @@ export default {
       const h = this.$createElement;
       this.$notify({
         title: "欢迎光临",
-        message: h(
-          "i",
-          { style: "color: teal" },
-          "这是你的系统"
-        ),
+        message: h("i", { style: "color: teal" }, "这是你的系统"),
       });
     },
     pass_change() {
       this.pass_show = !this.pass_show;
-       this.login_svg=!this.login_svg
+      this.login_svg = !this.login_svg;
     },
     //  getCode(){
     //    createCode()
@@ -128,7 +139,6 @@ export default {
   },
   mounted() {
     this.open1();
-    
   },
 };
 </script>

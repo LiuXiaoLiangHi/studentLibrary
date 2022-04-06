@@ -1,11 +1,3 @@
-<!--
- * @Author: liang
- * @Date: 2021-11-26 09:26:30
- * @LastEditors: liang
- * @LastEditTime: 2022-03-18 09:38:46
- * @Description: file content
- * @FilePath: \my-home\src\views\login\userLogin\noPassword.vue
--->
 
 <template>
   <div>
@@ -26,13 +18,14 @@
           placeholder="请输入6位验证码"
           prefix-icon="el-icon-thumb"
           clearable
-          :disabled="true"
+          :disabled="false"
         >
           <el-button
             slot="append"
             icon="el-icon-search"
             style="width: 70px; padding: 0"
-             :disabled="true"
+            :disabled="iSLoginCodeButton"
+            @click="gainLoginCode"
             >获取</el-button
           >
         </el-input>
@@ -58,9 +51,11 @@
 </template>
 
 <script>
+import { getLoginCode } from "@/api/createCode";
 export default {
   data() {
     return {
+      iSLoginCodeButton: false,
       formNopass: {
         userName: "",
         userCode: "",
@@ -77,6 +72,20 @@ export default {
   },
   methods: {
     receptionVoiceCode() {},
+    async gainLoginCode() {
+      let { data } = await getLoginCode();
+      this.formNopass.userCode = data.codeMa;
+      this.iSLoginCodeButton = true;
+      let h = this.$createElement;
+      this.$notify({
+        title: "发送成功",
+        duration:2000,
+        message: h("i", { style: "color: teal" }, "验证码60s秒内只可发送一次"),
+      });
+      setTimeout(() => {
+         this.iSLoginCodeButton = false
+      },  60000);
+    },
   },
 };
 </script>

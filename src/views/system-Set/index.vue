@@ -2,13 +2,14 @@
  * @Author: liang
  * @Date: 2022-03-09 15:52:47
  * @LastEditors: liang
- * @LastEditTime: 2022-03-18 09:17:33
+ * @LastEditTime: 2022-03-18 14:59:53
  * @Description: file content
  * @FilePath: \my-home\src\views\system-Set\index.vue
 -->
 <template>
   <div>
-        <svg-icon icon-class="tree"></svg-icon>
+     
+
   </div>
 </template>
 

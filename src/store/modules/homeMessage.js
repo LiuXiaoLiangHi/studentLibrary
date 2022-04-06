@@ -1,29 +1,44 @@
+/*
+ * @Author: liang
+ * @Date: 2022-03-14 08:31:06
+ * @LastEditors: liang
+ * @LastEditTime: 2022-03-18 15:44:44
+ * @Description: file content
+ * @FilePath: \my-home\src\store\modules\homeMessage.js
+ */
  
 /*
  * @Author: liang
  * @Description:用于存放home页面从后台接口获取的数据
  *  
  */
-import { getMessage} from '@/api/homeList'
+import { getMessage,getSchedule} from '@/api/homeList'
 export default {
     //  允许使用别名（命名空间）
     namespaced: true,
 
     state: {
         // 通知公告信息
-        advice: []
+        advice: [],
+        schedule:[]
     },
     getters: {},
     mutations: {
         SET_ADVICE(state, advice) {
             state.advice = advice
+        },
+        SET_SCHEDULES(state,schedule){
+            state.schedule=schedule
         }
     },
     actions: {
         //home页获取相应的信息
         async GET_SOMEADVICE({ commit }) {
            let advice=await  getMessage()
+           let schedule=await getSchedule()
+        //    console.log(schedule);
            commit('SET_ADVICE',advice.data)
+           commit('SET_SCHEDULES',schedule.data)
         }
     }
 }
