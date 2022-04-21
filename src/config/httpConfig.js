@@ -1,11 +1,4 @@
-/*
- * @Author: liang
- * @Date: 2022-03-04 08:53:38
- * @LastEditors: liang
- * @LastEditTime: 2022-03-09 11:04:06
- * @Description: file content
- * @FilePath: \作业\my-home\src\config\httpConfig.js
- */
+ 
 import axios from 'axios'
 import store from '../store'
 import baseUrl from './baseUrl'
@@ -89,9 +82,8 @@ http.get = function (url, options) {
         instance
             .get(url, options)
             .then(response => {
-
                 if (response.code === 0  || response.code ==0) {
-                    resolve(response)
+                    resolve(response.data)
                 } else {
                     Message.error({
                         message: response.msg
@@ -110,7 +102,8 @@ http.post = function (url, data, options) {
         instance.post(url, data, options)
             .then(response => {
                 if (response.code === 0 ||  response.code ==0) {
-                    resolve(response)
+                    resolve(response.data)
+                  
                 } else {
                     Message.error({
                         message: response.msg

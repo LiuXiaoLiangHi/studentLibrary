@@ -1,10 +1,10 @@
 /*
  * @Author: liang
  * @Date: 2022-02-21 15:00:38
- * @LastEditors: liang
- * @LastEditTime: 2022-03-18 09:25:51
+ * @LastEditors: LAPTOP-LD525C2O
+ * @LastEditTime: 2022-04-20 21:27:51
  * @Description: file content
- * @FilePath: \my-home\vue.config.js
+ * @FilePath: \作业\my-home\vue.config.js
  */
 const path = require('path');//引入path模块
 function resolve(dir) {
@@ -12,7 +12,7 @@ function resolve(dir) {
 }
 const proxyTargetMap = {
     school: 'http://10.20.142.184:3000',
-    test: 'http://localhost:5000',
+    test: 'http://localhost:3000',
     prod:'xxxxxx'
 }
 let proxyTarget = proxyTargetMap[process.env.API_TYPE] || proxyTargetMap.prod
@@ -38,7 +38,7 @@ module.exports = {
     },
     //关闭eslint
     devServer: {
-        
+       
         disableHostCheck: true,
         open: process.platform === 'darwin',
         host: 'localhost',
@@ -58,6 +58,7 @@ module.exports = {
             }
         },
         before: app => {}
+        // before: import('./mock/mock-server.js'),
     },
         // 调整内部的 webpack 配置。
     // 查阅 https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/webpack.md

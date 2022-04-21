@@ -51,7 +51,7 @@ const dynamicRoutes = [
         name: 'order-manage',
         meta: {
             name: '订单管理',
-            icon: 'fa fa-file-text-o',
+            icon: '邮件',
             iconColor:'color:#76d50d'
         },
         children: [
@@ -181,7 +181,7 @@ const dynamicRoutes = [
         name: 'students-management',
         meta: {
             name: '学生管理',
-            icon: 'el-icon-menu',
+            icon: '邮件',
             iconColor:'color:#94493c'
         },
         children: [

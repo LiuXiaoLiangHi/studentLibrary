@@ -1,11 +1,4 @@
-<!--
- * @Author: liang
- * @Date: 2022-03-14 08:31:06
- * @LastEditors: liang
- * @LastEditTime: 2022-03-18 14:00:45
- * @Description: file content
- * @FilePath: \my-home\src\views\403\index.vue
--->
+
 <template>
   <div class="errPage-container">
     <el-button icon="el-icon-arrow-left" class="pan-back-btn" @click="back">

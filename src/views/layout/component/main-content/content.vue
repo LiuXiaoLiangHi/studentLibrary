@@ -1,11 +1,4 @@
-<!--
- * @Author: liang
- * @Date: 2022-03-14 08:31:06
- * @LastEditors: liang
- * @LastEditTime: 2022-04-06 17:27:49
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\layout\component\main-content\content.vue
--->
+
 <!--
  * @Author: liang
  * @Description: 主页结构右侧视图层

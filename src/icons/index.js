@@ -1,11 +1,5 @@
-/*
- * @Author: liang
- * @Date: 2022-02-25 09:31:31
- * @LastEditors: liang
- * @LastEditTime: 2022-03-14 07:55:59
- * @Description: file content
- * @FilePath: \vue-cli3.0-vueadmin\src\icons\index.js
- */
+ 
+
 import Vue from 'vue'
 import SvgIcon from '@/components/SvgIcon'// svg组件
 

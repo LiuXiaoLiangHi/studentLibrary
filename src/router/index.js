@@ -2,7 +2,7 @@
  * @Author: liang
  * @Date: 2022-03-04 08:44:08
  * @LastEditors: liang
- * @LastEditTime: 2022-03-10 13:25:11
+ * @LastEditTime: 2022-04-11 11:28:36
  * @Description: file content
  * @FilePath: \作业\my-home\src\router\index.js
  */
@@ -56,7 +56,7 @@ export const DynamicRoutes = [
     component: Forbidden
   },
   {
-    path: '*',
+    path: '/:pathMatch(.*)*',
     component: NotFound
   }
 ]

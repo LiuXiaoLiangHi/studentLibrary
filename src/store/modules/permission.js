@@ -62,6 +62,7 @@ export default {
             // console.log('获取权限');
             let permissionList = await fetchPermission()
             // console.log(state);
+            console.log(permissionList);
 //             //permissionList  当前登录用户的全部信息    
 //             // 头像 avatar: "https://randy168.com/1533262153771.gif"
 //             //当前所有的路由页面 （根据 用户权险改变）
@@ -80,7 +81,7 @@ export default {
 // * @param {  dynamicRouter   -----动态路由集合 [{Object},{OBject},需要进行权限判断] } 
 // * @return { routes  -----过滤后的路由根据权限而定，不包含home路由}
 // */
-            let routes = recursionRouter(permissionList.data, dynamicRouter)
+            let routes = recursionRouter(permissionList.router, dynamicRouter)
             console.log('正在过滤路由');
             console.log('routes---过滤后的路由', routes);
 

@@ -1,0 +1,19 @@
+{
+  "userInfo": [
+    {
+      "uu_id": "E3D8AB7D-82BC-3804-D3CB-EDB4EBA8EF4D",
+      "name": "张三",
+      "password": "123456"
+    },
+    {
+      "uu_id": "FC0B55E8-B054-4F39-38C9-3DC8260D1740",
+      "name": "李四",
+      "password": "654321"
+    },
+    {
+      "uu_id": "9FCCB070-E99F-5031-5720-F4953B9A9829",
+      "name": "王五",
+      "password": "654321"
+    }
+  ]
+}

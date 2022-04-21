@@ -1,8 +1,8 @@
 <!--
  * @Author: liang
  * @Date: 2022-03-04 16:26:31
- * @LastEditors: liang
- * @LastEditTime: 2022-04-06 19:48:54
+ * @LastEditors: LAPTOP-LD525C2O
+ * @LastEditTime: 2022-04-20 21:40:35
  * @Description: file content
  * @FilePath: \作业\my-home\src\views\home\index.vue
 -->
@@ -41,7 +41,7 @@
         </el-table-column>
       </el-table>
     </el-card> -->
-    <generalCard cardTitle="系统更新公告" :tableData="xx"></generalCard>
+    <generalCard cardTitle="系统更新公告" :tableData="systemDate"></generalCard>
     <weatherInfoCard ></weatherInfoCard>
     <generalCard cardTitle="学生信息公告"></generalCard>
     <generalCard  cardTitle="图书信息公告"></generalCard>
@@ -58,16 +58,15 @@
 <script>
 import robot from "./common/robot.vue";
 import chart from "./common/chart.vue";
-// import { mapState } from "vuex";
 import versionsInformationCard from "./card/versionsInformationCard.vue";
 import generalCard from "./card/generalCard.vue";
 import weatherInfoCard from "./card/weatherInfoCard.vue";
 import calendarCard from "./card/calendarCard.vue";
-import {getMessage} from '@/api/homeList'
+// import {getMessage} from '@/api/homeList'
 export default {
   data() {
     return {
-      xx:[]
+      systemDate:[]
     };
   },
   components: {
@@ -81,15 +80,14 @@ export default {
 
   mounted() {
   this.fetchGetMessage()
-   
   },
   computed: {
     
   },
   methods: {
    async fetchGetMessage(){
-        let {data}= await getMessage();
-        this.xx=data
+        // let {data}= await getMessage();
+        // this.systemDate=data
     }
   }
 };
