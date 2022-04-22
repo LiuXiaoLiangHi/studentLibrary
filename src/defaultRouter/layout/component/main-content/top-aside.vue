@@ -22,6 +22,7 @@
         </template>
       </transition-group>
     </el-breadcrumb>
+    <!-- <Breadcrumb></Breadcrumb> -->
     <!-- 右侧用户信息以及退出 -->
     <div class="aside__top--right">
       
@@ -57,12 +58,18 @@
 <script>
 import { mapState } from "vuex";
 import Hamburger from '@/components/Hamburger/index.vue'
+// import Breadcrumb from '@/components/Breadcrumb/index.vue'
 export default {
+  mounted() {
+     
+      console.log("matched============",this.$route);
+  },
   data() {
     return {};
   },
   components:{
-    Hamburger
+    Hamburger,
+    // Breadcrumb
   },
   computed: {
     ...mapState(["isSidebarNavCollapse", "crumbList"]),

@@ -54,7 +54,7 @@ server.post('/login', async (req, res) => {
         "router":["index","students-management","students-statistical","students-classList","students-information",
         "book-management","book-borrow","book-return","book-statistical",
         "book-information","admin-management","admin-center",
-        "admin-permission","admin-userList","admin-set","systemSet"
+        "admin-permission","admin-userList","systemSet"
         ]
       }
     })

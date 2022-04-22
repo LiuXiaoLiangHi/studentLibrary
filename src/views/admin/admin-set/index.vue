@@ -1,8 +1,8 @@
 <!--
  * @Author: liang
  * @Date: 2022-03-09 15:49:30
- * @LastEditors: liang
- * @LastEditTime: 2022-03-09 16:01:24
+ * @LastEditors: LAPTOP-LD525C2O
+ * @LastEditTime: 2022-04-21 21:11:18
  * @Description: file content
  * @FilePath: \作业\my-home\src\views\admin\admin-set\index.vue
 -->
@@ -12,7 +12,9 @@
 
 <script>
 export default {
-
+ mounted() {
+   console.log('我被时尚大方')
+ },
 }
 </script>
 

@@ -1,24 +1,3 @@
-/* 学生管理 */
-const Order = () => import('@/views/order-manage')
-const OrderList = () => import('@/views/order-manage/order-list')
-const ProductManage = () => import('@/views/order-manage/product-manage')
-const ProductionList = () =>
-    import('@/views/order-manage/product-manage/production-list')
-const ReviewManage = () =>
-    import('@/views/order-manage/product-manage/review-manage')
-const ReturnGoods = () => import('@/views/order-manage/return-goods')
-
-/* 图书管理 */
-const Goods = () => import('@/views/goods-manage')
-const GoodsList = () => import('@/views/goods-manage/goods-list')
-const GoodsClassify = () => import('@/views/goods-manage/goods-classify')
-//  用户管理
-const Permission = () => import('@/views/permission')
-// const UserManage = () => import('@/views/permission/user-manage')
-// const RoleManage = () => import('@/views/permission/role-manage')
-// const MenuManage = () => import('@/views/permission/menu-manage')
-
-
 //学生管理
 const Student = () => import('@/views/student/index.vue')
 const Statistical = () => import('@/views/student/statistical/index.vue')
@@ -38,142 +17,13 @@ const AdminManagement =() => import('@/views/admin/index.vue')
 const AdminCenter=() => import('@/views/admin/admin-center/index.vue')
 const AdminPermission=() => import('@/views/admin/admin-center/permission/index.vue')
 const AdminUserList =() => import('@/views/admin/admin-center/userList/index.vue')
-const AdminSet =() => import('@/views/admin/admin-set/index.vue')
+ 
 
 //设置系统页面
 const SystemSet = () => import('@/views/system-Set/index.vue')
 
 /* 需要权限判断的路由 */
 const dynamicRoutes = [
-    {
-        path: '/order',
-        component: Order,
-        name: 'order-manage',
-        meta: {
-            name: '订单管理',
-            icon: '邮件',
-            iconColor:'color:#76d50d'
-        },
-        children: [
-            {
-                path: 'list',
-                name: 'order-list',
-                component: OrderList,
-                meta: {
-                    name: '订单列表',
-                    icon: 'fa fa-list'
-                }
-            },
-            {
-                path: 'product',
-                name: 'product-manage',
-                component: ProductManage,
-                meta: {
-                    name: '生产管理',
-                    icon: 'fa fa-gavel'
-                },
-                children: [
-                    {
-                        path: 'list',
-                        name: 'product-list',
-                        component: ProductionList,
-                        meta: {
-                            name: '生产列表',
-                            icon: 'fa fa-align-left'
-                        }
-                    },
-                    {
-                        path: 'review',
-                        name: 'review-manage',
-                        component: ReviewManage,
-                        meta: {
-                            name: '审核管理',
-                            icon: 'fa fa-group'
-                        }
-                    }
-                ]
-            },
-            {
-                path: 'returnGoods',
-                name: 'return-goods',
-                component: ReturnGoods,
-                meta: {
-                    name: '退货管理',
-                    icon: 'fa fa-handshake-o'
-                }
-            }
-        ]
-    },
-    {
-        path: '/goods',
-        component: Goods,
-        name: 'goods',
-        meta: {
-            name: '产品管理',
-            icon: 'el-icon-goblet',
-            iconColor:'color:#00ffff'
-        },
-        children: [
-            {
-                path: 'list',
-                name: 'goods-list',
-                component: GoodsList,
-                meta: {
-                    name: '产品列表',
-                    icon: 'el-icon-goblet'
-                }
-            },
-            {
-                path: 'classify',
-                name: 'goods-classify',
-                component: GoodsClassify,
-                meta: {
-                    name: '产品分类',
-                    icon: 'el-icon-goblet'
-                }
-            }
-        ]
-    },
-    {
-        path: '/permission',
-        component: Permission,
-        name: 'permission',
-        meta: {
-            name: '权限管理',
-            icon: 'el-icon-lollipop',
-            iconColor:'color:#ff2982'
-        },
-        // children: [
-        //     {
-        //         path: 'user',
-        //         name: 'user-manage',
-        //         component: UserManage,
-        //         meta: {
-        //             name: '用户管理',
-        //             icon: 'table'
-        //         }
-        //     },
-        //     {
-        //         path: 'role',
-        //         name: 'role-manage',
-        //         component: RoleManage,
-        //         meta: {
-        //             name: '角色管理',
-        //             icon: 'eye'
-        //         }
-        //     },
-        //     {
-        //         path: 'menu',
-        //         name: 'menu-manage',
-        //         component: MenuManage,
-        //         meta: {
-        //             name: '菜单管理',
-        //             icon: 'tree'
-        //         }
-        //     }
-        // ]
-    }
-    ,
     //学生管理
     {
         path: '/students',
@@ -182,7 +32,7 @@ const dynamicRoutes = [
         meta: {
             name: '学生管理',
             icon: '邮件',
-            iconColor:'color:#94493c'
+            iconColor:''
         },
         children: [
             {
@@ -191,7 +41,7 @@ const dynamicRoutes = [
                 component: Statistical,
                 meta: {
                     name: '学生统计',
-                    icon: 'el-icon-s-data'
+                    icon: ''
                 }
             },
             {
@@ -200,7 +50,7 @@ const dynamicRoutes = [
                 component: ClassList,
                 meta: {
                     name: '班级列表',
-                    icon: 'fa fa-address-book'
+                    icon: ''
                 }
             },
             {
@@ -209,7 +59,7 @@ const dynamicRoutes = [
                 commponent: StudentsInformation,
                 meta: {
                     name: '学生信息管理',
-                    icon: 'el-icon-coffee-cup'
+                    icon: ''
                 }
             }
         ]
@@ -221,8 +71,8 @@ const dynamicRoutes = [
         name: 'book-management',
         meta: {
             name: '图书管理',
-            icon: 'fa fa-book',
-            iconColor:'color:#a16ecb'
+            icon: '',
+            iconColor:''
         },
         children: [
             {
@@ -231,7 +81,7 @@ const dynamicRoutes = [
                 component: Borrow,
                 meta: {
                     name: '图书借阅',
-                    icon: 'fa fa-american-sign-language-interpreting'
+                    icon: ''
                 }
             },
             {
@@ -240,7 +90,7 @@ const dynamicRoutes = [
                 component: BookReturn,
                 meta: {
                     name: '图书归还',
-                    icon: 'el-icon-ice-drink'
+                    icon: ''
                 }
             },
             {
@@ -249,7 +99,7 @@ const dynamicRoutes = [
                 component: BookStatistical,
                 meta: {
                     name: '借阅统计',
-                    icon: 'el-icon-goblet'
+                    icon: ''
                 }
             },
             {
@@ -258,7 +108,7 @@ const dynamicRoutes = [
                 component: BookInformation,
                 meta: {
                     name: '书库管理',
-                    icon: 'el-icon-sugar'
+                    icon: ''
                 }
             }
         ]
@@ -269,8 +119,8 @@ const dynamicRoutes = [
         component: AdminManagement,
         meta: {
             name: '用户管理',
-            icon: 'fa fa-user',
-            iconColor:'color:#695CC1'
+            icon: '',
+            iconColor:''
         },
         children: [
             {
@@ -303,15 +153,7 @@ const dynamicRoutes = [
                 ]
 
             },
-            {
-                path: 'set',
-                name: 'admin-set',
-                commponent: AdminSet,
-                meta: {
-                    name: "个人设置",
-                    icon: ''
-                }
-            }
+          
         ]
 
     },
@@ -323,8 +165,8 @@ const dynamicRoutes = [
         component: SystemSet,
         meta: {
             name: '系统设置',
-            icon: 'fa fa-cogs',
-            iconColor:'color:#BE1238'
+            icon: '',
+            iconColor:''
         }
     }
 

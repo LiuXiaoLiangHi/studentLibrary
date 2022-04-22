@@ -1,48 +1,18 @@
-<!--
- * @Author: liang
- * @Date: 2021-12-06 17:56:20
- * @LastEditors: liang
- * @LastEditTime: 2022-04-06 17:37:33
- * @Description: 用户登录页面
- * @FilePath: \作业\my-home\src\views\login\index.vue
--->
+ 
 <template>
-  <!-- 主体 -->
-  <div class="main">
-    <!-- 登录卡片 上 -->
-    <div class="Top_of_the_card"></div>
-    <!-- 登录卡片 -->
-    <el-card class="box-card">
-      <!-- 导航栏 -->
-      <!-- :default-active="activeIndex" -->
-      <el-menu
-        class="el-menu-demo"
-        mode="horizontal"
-        style="border-bottom: solid 1px #efefef"
-      >
-        <el-menu-item class="el-menu-item" @click="pass_change"
-          >免密码登录
-          <svg-icon
-            icon-class="三角形"
-            class="login_svg"
-            v-show="login_svg"
-          ></svg-icon>
-        </el-menu-item>
-        <el-menu-item class="el-menu-item" @click="pass_change"
-          >密码登录
-          <svg-icon
-            icon-class="三角形"
-            class="login_svg"
-            v-show="!login_svg"
-          ></svg-icon>
-        </el-menu-item>
-        <img src="@/style/image/QR-Code.jpg" style="margin-left: 108px" />
+  <div class="login_content">
+    <div class="login_over_top"></div>
+    <el-card class="login_main">
+      <el-menu class="login_main_header" mode="horizontal">
+        <HeaderMenuItem :itemProperty="{ title: '免密码登录', isShowSvg: login_svg }"  @click="cutLoginState(0)"/>
+        <HeaderMenuItem :itemProperty="{ title: '密码登录', isShowSvg: !login_svg }"   @click="cutLoginState(1)"/>
+        <img src="@/style/image/QR-Code.jpg" style="" />
       </el-menu>
       <!-- 内容区 -->
       <el-container direction="vertical">
         <!-- 登录方式显示区 -->
         <el-main style="" class="el-main">
-          <noPassword v-show="pass_show" />
+          <NoPassword v-show="pass_show" />
           <PasswordToLogin v-show="!pass_show" />
         </el-main>
         <!-- 登录卡片 底部 其他内容 -->
@@ -73,15 +43,15 @@
             <span class="socialLoginFristSpan">社交账号登录</span>
             <span class="Login-socialButtonGroup">
               <div class="btn_none">
-                <img src="@/style/image/qq.jpg" alt="" />
+                <svg-icon icon-class="QQ"></svg-icon>
                 <span>QQ</span>
               </div>
               <div class="btn_none">
-                <img src="@/style/image/weixin.jpg" alt="" />
+                <svg-icon icon-class="微信"></svg-icon>
                 <span>微信</span>
               </div>
               <div class="btn_none">
-                <img src="@/style/image/weibo.jpg" alt="" />
+                <svg-icon icon-class="微博"></svg-icon>
                 <span>微博</span>
               </div>
             </span>
@@ -107,18 +77,20 @@
 </template>
  
  <script>
-import noPassword from "./userLogin/noPassword.vue";
-import PasswordToLogin from "./userLogin/PasswordToLogin.vue";
-// import {createCode} from "@/api/createCode"
+import NoPassword from "./components/Login-content/NoPassword";
+import PasswordToLogin from "./components/Login-content/PasswordToLogin.vue";
+import HeaderMenuItem from "./components/Login-head/HeaderMenuItem.vue";
 export default {
   components: {
-    noPassword,
+    NoPassword,
     PasswordToLogin,
+    HeaderMenuItem,
   },
   data() {
     return {
       pass_show: true,
       login_svg: true,
+      LoginState:0
     };
   },
   methods: {
@@ -129,9 +101,17 @@ export default {
         message: h("i", { style: "color: teal" }, "这是你的系统"),
       });
     },
-    pass_change() {
+    // 切换登录的状态， 短信登录 or 密码登录
+    cutLoginState(toState) {
+      if(toState==this.LoginState){
+        return
+      }else{
+        this.LoginState=toState
+      }
       this.pass_show = !this.pass_show;
       this.login_svg = !this.login_svg;
+    //  console.log(this);
+     
     },
     //  getCode(){
     //    createCode()

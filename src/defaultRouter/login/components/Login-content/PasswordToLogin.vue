@@ -1,11 +1,4 @@
-<!--
- * @Author: liang
- * @Date: 2021-11-26 09:42:21
- * @LastEditors: LAPTOP-LD525C2O
- * @LastEditTime: 2022-04-20 21:48:52
- * @Description: file content
- * @FilePath: \my-home\src\views\login\userLogin\PasswordToLogin.vue
--->
+ 
 <template>
   <div>
     <el-form :model="loginForm" ref="ruleForm" :rules="loginRules">
@@ -43,7 +36,7 @@
     </el-form>
     <div class="from_down">
       <span>
-        <el-link type="info">管理员登录?</el-link>
+        <el-link type="info">用户注册?</el-link>
       </span>
       <span>
         <el-link type="primary">忘记密码？</el-link>

@@ -1,4 +1,44 @@
-<!--
+<template>
+  <div class="menu-container">
+    <template v-for="v in menuList">
+      <!-- 有子路由在这渲染 -->
+      <el-submenu
+        :index="v.name"
+        v-if="v.children && v.children.length > 0"
+        :key="v.name"
+      >
+        <template slot="title">
+          <svg-icon
+            v-if="v.meta && v.meta.icon"
+            :icon-class="v.meta.icon"
+            style="margin-right: 16px"
+          ></svg-icon>
+          <span>{{ v.meta.name }}</span>
+        </template>
+        <el-menu-item-group>
+          <my-nav :menuList="v.children"></my-nav>
+        </el-menu-item-group>
+      </el-submenu>
+      <!-- 没有子路由在这渲染 -->
+      <el-menu-item
+        :key="v.name"
+        :index="v.name"
+        @click="gotoRoute(v.name)"
+        v-else
+      >
+        <svg-icon
+          v-if="v.meta && v.meta.icon"
+          :icon-class="v.meta.icon"
+        ></svg-icon>
+        <span slot="title">{{ v.meta.name }}</span>
+      </el-menu-item>
+    </template>
+  </div>
+</template>
+
+<script>
+//#region
+/**
  * @Author: liang
  * @Description: 左侧导航栏具体结构，通过递归方式快速生成结构,只能通过父组件爱你传递全部路由，不然递归会炸
   ____________________________________________________________________________________________________________________
@@ -22,65 +62,25 @@
        path:路径
       }
    ]
--->
-<template>
-  <div class='menu-container'>
-      <!-- <el-scrollbar wrap-class="scrollbar-wrapper"> -->
-    <template v-for='v in menuList'>
-      <!-- 有子路由在这渲染 -->
-      <el-submenu
-        :index='v.name'
-        v-if='v.children&&v.children.length>0'
-        :key='v.name'
-      >
-        <template slot='title'>
-          <svg-icon v-if="v.meta&&v.meta.icon" :icon-class="v.meta.icon" style="margin-right:16px"></svg-icon>
-          <span>{{v.meta.name}}</span>
-        </template>
-        <el-menu-item-group>
-          <my-nav :menuList='v.children'></my-nav>
-        </el-menu-item-group>
-      </el-submenu>
-      <!-- 没有子路由在这渲染 -->
-      <el-menu-item
-        :key='v.name'
-        :index='v.name'
-        @click='gotoRoute(v.name)'
-        v-else
-      >
-       <!-- <i :class="v.meat.icon"></i> -->
-        <!-- <i
-          class='iconfont'
-          :class='v.meta.icon'
-          :style="v.meta.iconColor"
-        ></i> -->
-        <svg-icon v-if="v.meta&&v.meta.icon" :icon-class="v.meta.icon"></svg-icon>
-        <span slot='title'>{{v.meta.name}}</span>
-      </el-menu-item>
-    </template>
-      <!-- </el-scrollbar> -->
-  </div>
-</template>
-
-<script>
+ */
+//#endregion 
 export default {
-    name: 'my-nav',
-    props: {
-        menuList: {
-            type: Array,
-            default: () => {
-                return []
-            }
-        }
+  name: "my-nav",
+  props: {
+    menuList: {
+      type: Array,
+      required: true,
+      default: () => {
+        return [];
+      },
     },
-    methods: {
-        gotoRoute(name) {
-            this.$router.push({ name })
-        }
-    }
-}
+  },
+  methods: {
+    gotoRoute(name) {
+      this.$router.push({ name });
+    },
+  },
+};
 </script>
 
-<style lang='less'>
-
-</style>
+<style lang="less"></style>

@@ -1,8 +1,8 @@
 /*
  * @Author: liang
  * @Date: 2022-03-04 08:44:08
- * @LastEditors: liang
- * @LastEditTime: 2022-04-11 11:28:36
+ * @LastEditors: LAPTOP-LD525C2O
+ * @LastEditTime: 2022-04-21 22:00:16
  * @Description: file content
  * @FilePath: \作业\my-home\src\router\index.js
  */
@@ -10,10 +10,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-import Login from '../views/login/index.vue'
-import Layout from '../views/layout/index.vue'
-import Forbidden from '../views/403/index.vue'
-import NotFound from '../views/404/index.vue'
+import Login from '../defaultRouter/login/index.vue'
+import Layout from '../defaultRouter/layout/index.vue'
+import Forbidden from '../defaultRouter/403/index.vue'
+import NotFound from '../defaultRouter/404/index.vue'
 import Home from '../views/home/index.vue'
 /* 初始路由 */
 export default new VueRouter({
