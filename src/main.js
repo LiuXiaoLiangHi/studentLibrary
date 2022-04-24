@@ -1,11 +1,3 @@
-/*
- * @Author: liang
- * @Date: 2022-03-04 08:44:08
- * @LastEditors: liang
- * @LastEditTime: 2022-03-18 09:09:06
- * @Description: file content
- * @FilePath: \my-home\src\main.js
- */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -91,8 +83,12 @@ router.afterEach((to) => {
     store.commit('permission/SET_CURRENT_MENU', to.name)
 })
 
-new Vue({
+let a= new Vue({
   router,
   store,
+  beforeCreate(){
+    Vue.prototype.$bus=this
+  },
   render: h => h(App)
 }).$mount('#app')
+console.log(a);

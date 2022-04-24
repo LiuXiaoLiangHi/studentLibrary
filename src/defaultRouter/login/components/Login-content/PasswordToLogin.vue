@@ -1,40 +1,18 @@
  
 <template>
-  <div>
-    <el-form :model="loginForm" ref="ruleForm" :rules="loginRules">
+    <el-form :model="loginForm" ref="ruleForm" :rules="loginRules" class="yyy">
       <el-form-item label="" prop="username">
-        <el-input
-          v-model="loginForm.username"
-          placeholder="用户名"
-          prefix-icon="el-icon-user-solid"
-          clearable
-          required
-        >
+        <el-input v-model="loginForm.username" placeholder="用户名" prefix-icon="el-icon-user-solid" clearable required>
         </el-input>
       </el-form-item>
       <el-form-item label="" prop="password">
-        <el-input
-          v-model="loginForm.password"
-          placeholder="密码"
-          prefix-icon="el-icon-thumb"
-          show-password
-          clearable
-          required
-        >
+        <el-input v-model="loginForm.password" placeholder="密码" prefix-icon="el-icon-thumb" show-password clearable required>
         </el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-button
-          type="primary"
-          size="default"
-          style="width: 100%"
-          :disabled="is_or__diable"
-          @click="submitForm()"
-          >登录</el-button
-        >
+        <el-button type="primary" size="default" style="width: 100%" :disabled="is_or__diable" @click="submitForm()">登录</el-button>
       </el-form-item>
-    </el-form>
-    <div class="from_down">
+       <div class="from_down">
       <span>
         <el-link type="info">用户注册?</el-link>
       </span>
@@ -42,12 +20,14 @@
         <el-link type="primary">忘记密码？</el-link>
       </span>
     </div>
-  </div>
+    </el-form>
+   
+  
 </template>
 
 <script>
 import { login } from "@/api/permission";
- import { Message } from 'element-ui'
+import { Message } from "element-ui";
 export default {
   data() {
     const validateUsername = (rule, value, callback) => {
@@ -92,7 +72,7 @@ export default {
           username: this.loginForm.username,
           password: this.loginForm.password,
         });
-         Message.success('登录成功')
+        Message.success("登录成功");
         // //将data中的token 赋值给变量token
         let token = data.token;
 
@@ -109,15 +89,18 @@ export default {
   },
   computed: {
     is_or__diable() {
-      return this.loginForm.username==''||this.loginForm.password==''
+      return this.loginForm.username == "" || this.loginForm.password == "";
     },
   },
 };
 </script>
 
 <style lang="less" scoped>
+.yyy{
+  padding: 0 20px;
+}
 .el-form-item {
-  margin-top: 12px;
+  // margin-top: 12px;
 }
 .from_down {
   width: 100%;

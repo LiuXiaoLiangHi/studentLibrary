@@ -1,145 +1,155 @@
-@import '../css/_mixin.less';
-.login_content {
-    width: 100%;
-    height: 100%;
-    min-width: 950px;
-    background: url('~@/style/image/background.png') no-repeat;
-    background-size: 100% 100%;
-    .ElementCenter();
-    flex-direction: column;
-  
-    //-----------卡片上方------------
-    .login_over_top {
-        width: 350px;
-        height: 100px;
-        background: url('~@/style/image/title.png') no-repeat;
-        background-size: 100% 100%;
-    }
-    // 卡片
-    .login_main {
-        width: 400px;
-        height: 490px;
-        margin: 0 auto;
-        margin-bottom: 100px;
-    //   导航栏 样式
-       .login_main_header{
-        border-bottom: solid 1px #FAFAFA !important;
-        &>img{
-            margin-left: 108px 
-        }
-       }
-      
-      
-      
-      
+// @import '../css/_mixin.less';
+
+// .login_content {
+//     width: 100%;
+//     height: 100%;
+//     min-width: 950px;
+//     background: url('~@/style/image/background.png') no-repeat;
+//     background-size: 100% 100%;
+//     .ElementCenter();
+//     flex-direction: column;
+//     //-----------卡片上方------------
+//     .login_over_top {
+//         width: 350px;
+//         height: 100px;
+//         background: url('~@/style/image/title.png') no-repeat;
+//         background-size: 100% 100%;
+//     }
+ 
+//     // 卡片
+//     .login_main {
+//         width: 380px;
+//         height: 490px;
+//         margin: 0 auto;
+//         margin-bottom: 100px;
+        //   导航栏 样式
+        // .login_main_header {
+        //     border-bottom: solid 1px #FAFAFA !important;
+        //     &>img {
+        //         margin-left: 108px
+        //     }
+        // }
+
         // 视图区
-        .el-main {
-            width: 100%;
-            height: 250px;
-            padding-bottom: 0;
-            overflow: hidden;
-        }
+        // .el-main {
+        //     width: 100%;
+        //     height: 250px;
+        //     padding-bottom: 0;
+        //     overflow: hidden;
+        // }
+
         // 登录卡片  底下部分
-        .card_foot {
-            margin-top: 5px;
-            padding: 0;
-            font-size: 13px;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            width: 100%;
-            height: 170px !important;
-            // 用户协议的样式
-            .data_padding a:hover{
-                color: #0f88eb;
-            }
-            // 第三方登录样式
-            .Login-socialLogin {
-                display: flex;
-                justify-content: space-between;
-                height: 60px;
-                line-height: 60px;
-                font-size: 15px;
-                //社交号登录  |  QQ/微信/微博
-                .Login-socialLogin>span {
-                    display: inline-block;
-                }
-               .socialLoginFristSpan{
-                   width: 100px !important;
-               }
-                // QQ/微信/微博盒子
-                .Login-socialButtonGroup {
-                    margin-left: 20px;
-                    width: 260px;
-                    .btn_none {
-                        margin-right: 8px;
-                        line-height: 60px;
-                        width: 70px;
-                        float: left;
-                        .ElementCenter();
-                    }
-                //   访问和变小手
-                    .btn_none:hover {
-                        cursor: pointer;
-                    }
-                //   QQ/微信/微博字体样式
-                    .btn_none>span {
-                        font-family: "Trebuchet MS", "Lucida Sans Unicode",
-                            "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-                        color: #95bfe8;
-                        font-size: 18px;
-                        margin-left: 5px;
-                    }
-                }
-            }
+        // .card_foot {
+        //     margin-top: 5px;
+        //     padding: 0;
+        //     font-size: 13px;
+        //     display: flex;
+        //     flex-direction: column;
+        //     text-align: left;
+        //     width: 100%;
+        //     height: 170px !important;
 
-            // 登录卡片 最底下区，联系作者和下载App
-            .login_foot {
-                width: 100%;
-                height: 60px;
-                background:  #F6F6F6;
-                display: flex;
-                justify-content: space-between;
-            }
+        //     // 用户协议的样式
+        //     .data_padding a:hover {
+        //         color: #0f88eb;
+        //     }
 
-            .login_foot>div {
-                float: left;
-                width: 195px;
-                height: 100%;
-                .ElementCenter();
-                font-size: 18px;
-                color: #0f88eb;
-            }
+        //     // 第三方登录样式
+        //     .Login-socialLogin {
+        //         display: flex;
+        //         justify-content: space-between;
+        //         height: 60px;
+        //         line-height: 60px;
+        //         font-size: 15px;
 
-            .login_foot>div:hover {
-                cursor: pointer;
-            }
+        //         //社交号登录  |  QQ/微信/微博
+        //         .Login-socialLogin>span {
+        //             display: inline-block;
+        //         }
 
-            .Vertical_separation {
-                width: 1px;
-                height: 30px;
-                background: #ebebeb;
-                margin-top: 15px;
-            }
-        }
-    }
+        //         .socialLoginFristSpan {
+        //             width: 100px !important;
+        //         }
 
-}
+        //         // QQ/微信/微博盒子
+        //         .Login-socialButtonGroup {
+        //             margin-left: 20px;
+        //             width: 260px;
+
+        //             .btn_none {
+        //                 margin-right: 8px;
+        //                 line-height: 60px;
+        //                 width: 70px;
+        //                 float: left;
+        //                 .ElementCenter();
+        //             }
+
+        //             //   访问和变小手
+        //             .btn_none:hover {
+        //                 cursor: pointer;
+        //             }
+
+        //             //   QQ/微信/微博字体样式
+        //             .btn_none>span {
+        //                 font-family: "Trebuchet MS", "Lucida Sans Unicode",
+        //                     "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+        //                 color: #95bfe8;
+        //                 font-size: 18px;
+        //                 margin-left: 5px;
+        //             }
+        //         }
+        //     }
+
+        //     // 登录卡片 最底下区，联系作者和下载App
+        //     .login_foot {
+        //         width: 100%;
+        //         height: 60px;
+        //         background: #F6F6F6;
+        //         display: flex;
+        //         justify-content: space-between;
+        //     }
+
+        //     .login_foot>div {
+        //         float: left;
+        //         width: 195px;
+        //         height: 100%;
+        //         .ElementCenter();
+        //         font-size: 18px;
+        //         color: #0f88eb;
+        //     }
+
+        //     .login_foot>div:hover {
+        //         cursor: pointer;
+        //     }
+
+        //     .Vertical_separation {
+        //         width: 1px;
+        //         height: 30px;
+        //         background: #ebebeb;
+        //         margin-top: 15px;
+        //     }
+        // }
+    // }
+
+// }
 
 // -------------- 样式重构 ------------------------
 // 自定义样式
-.el-card__body {
-    padding: 0 !important;
-}
-.data_padding {
-    padding: 0 20px;
-}
-.el-menu-item {
-    font-size: 16px;
-    color: #444;
-    font-weight: 500;
-}
+// .el-card__body {
+//     padding: 0 !important;
+// }
+
+// .data_padding {
+//     padding: 0 20px;
+// }
+
+// .el-menu-item {
+//     font-size: 16px;
+//     color: #444;
+//     font-weight: 500;
+// }
+
 // 修改small标签的padd
-small {
-    margin-left: 10px;
-}
+// small {
+//     margin-left: 10px;
+// }

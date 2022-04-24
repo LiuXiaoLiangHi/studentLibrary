@@ -1,44 +1,27 @@
- 
 <template>
   <div class="login_content">
     <div class="login_over_top"></div>
     <el-card class="login_main">
-      <el-menu class="login_main_header" mode="horizontal">
-        <HeaderMenuItem :itemProperty="{ title: '免密码登录', isShowSvg: login_svg }"  @click="cutLoginState(0)"/>
-        <HeaderMenuItem :itemProperty="{ title: '密码登录', isShowSvg: !login_svg }"   @click="cutLoginState(1)"/>
+      <!-- <el-menu class="login_main_header" mode="horizontal">
+        <HeaderMenuItem :itemProperty="{ title: '免密码登录', isShowSvg: login_svg }"/>
+        <HeaderMenuItem :itemProperty="{ title: '密码登录', isShowSvg: !login_svg }"/>
         <img src="@/style/image/QR-Code.jpg" style="" />
       </el-menu>
-      <!-- 内容区 -->
       <el-container direction="vertical">
-        <!-- 登录方式显示区 -->
         <el-main style="" class="el-main">
           <NoPassword v-show="pass_show" />
           <PasswordToLogin v-show="!pass_show" />
-        </el-main>
-        <!-- 登录卡片 底部 其他内容 -->
-        <el-footer class="card_foot">
-          <!-- 协议文本展示区 -->
+        </el-main> -->
+      <!-- <el-footer class="card_foot">
           <div class="data_padding" style="margin-bottom: 5px">
-            <span
-              >手机验证后自动登录，登录即代表同意
-              <a
-                href="https://homewh.chaoxing.com/agree/userAgreement?appId=900001"
-              >
+            <span>手机验证后自动登录，登录即代表同意
+              <a href="https://homewh.chaoxing.com/agree/userAgreement?appId=900001">
                 《用户协议》
               </a>
-              <a href="https://www.yidianzixun.com/landing_privacy">
-                《隐私保护指引》
-              </a>
+              <a href="https://www.yidianzixun.com/landing_privacy"> 《隐私保护指引》 </a>
             </span>
           </div>
-          <!-- hr分割线 -->
-          <hr
-            color="#EBEBEB"
-            sizi="1"
-            width="95%"
-            style="opacity: 0.8; margin: auto"
-          />
-          <!--第三方登录显示区-->
+          <hr color="#EBEBEB" sizi="1" width="95%" style="opacity: 0.8; margin: auto" />
           <div class="Login-socialLogin data_padding">
             <span class="socialLoginFristSpan">社交账号登录</span>
             <span class="Login-socialButtonGroup">
@@ -56,41 +39,36 @@
               </div>
             </span>
           </div>
-          <!-- 登录卡片 最底下区，联系作者和下载App -->
           <div class="login_foot">
             <div>
               <i class="el-icon-s-promotion"></i>
               <small>联系作者</small>
             </div>
-            <!--  -->
             <span class="Vertical_separation"></span>
-            <!--  -->
             <div>
               <i class="el-icon-download"></i>
               <small>下载APP</small>
             </div>
           </div>
-        </el-footer>
-      </el-container>
+        </el-footer> -->
+      <!-- </el-container> -->
+      <LoginMianContent />
+      <LoginFooter />
     </el-card>
   </div>
 </template>
- 
- <script>
-import NoPassword from "./components/Login-content/NoPassword";
-import PasswordToLogin from "./components/Login-content/PasswordToLogin.vue";
-import HeaderMenuItem from "./components/Login-head/HeaderMenuItem.vue";
+
+<script>
+import LoginMianContent from "./components/Login-head/Login-mian-content.vue";
+import LoginFooter from "./components/Login-foot/Login-foot.vue";
 export default {
   components: {
-    NoPassword,
-    PasswordToLogin,
-    HeaderMenuItem,
+    LoginMianContent,
+    LoginFooter,
   },
   data() {
     return {
-      pass_show: true,
-      login_svg: true,
-      LoginState:0
+
     };
   },
   methods: {
@@ -101,21 +79,6 @@ export default {
         message: h("i", { style: "color: teal" }, "这是你的系统"),
       });
     },
-    // 切换登录的状态， 短信登录 or 密码登录
-    cutLoginState(toState) {
-      if(toState==this.LoginState){
-        return
-      }else{
-        this.LoginState=toState
-      }
-      this.pass_show = !this.pass_show;
-      this.login_svg = !this.login_svg;
-    //  console.log(this);
-     
-    },
-    //  getCode(){
-    //    createCode()
-    //  }
   },
   mounted() {
     this.open1();
@@ -123,5 +86,27 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import url(~@/style/css/login.less);
+@import url(~@/style/css/_mixin.less);
+.login_content {
+  width: 100%;
+  height: 100%;
+  min-width: 950px;
+  background: url("~@/style/image/background.png") no-repeat;
+  background-size: 100% 100%;
+  .ElementCenter();
+  flex-direction: column;
+  //-----------卡片上方------------
+  .login_over_top {
+    width: 350px;
+    height: 100px;
+    background: url("~@/style/image/title.png") no-repeat;
+    background-size: 100% 100%;
+  }
+  .login_main {
+    width: 380px;
+    height: 490px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+}
 </style>

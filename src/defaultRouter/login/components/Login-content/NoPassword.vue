@@ -1,7 +1,6 @@
 
 <template>
-  <div>
-    <el-form :model="formNopass" ref="formNopass" :rules="rulesNopass">
+    <el-form :model="formNopass" ref="formNopass" :rules="rulesNopass" class="xxx">
       <el-form-item label="" prop="userName">
         <el-input
           v-model="formNopass.userName"
@@ -47,7 +46,6 @@
         >
       </el-form-item>
     </el-form>
-  </div>
 </template>
 
 <script>
@@ -91,6 +89,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.xxx{
+  padding: 0 20px
+}
+
 .el-form-item {
   margin-top: 12px;
 }

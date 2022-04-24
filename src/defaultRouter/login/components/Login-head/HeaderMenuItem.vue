@@ -1,11 +1,7 @@
- <template>
-  <el-menu-item class="header_menu_item" v-on="$listeners" >
+<template>
+  <el-menu-item class="header_menu_item" @click="changeBottomStyle" :style="{borderBottom:bottomStyle}">
     {{ itemProperty.title }}
-    <svg-icon
-      icon-class="三角形"
-      class="header-menu_item_svg"
-      v-show="itemProperty.isShowSvg"
-    ></svg-icon>
+    <!-- <svg-icon icon-class="三角形" class="header-menu_item_svg" v-show="itemProperty.isShowSvg" /> -->
   </el-menu-item>
 </template>
 <script>
@@ -14,10 +10,26 @@ export default {
     itemProperty: {
       required: true,
       type: Object,
-    }
+    },
+  },
+  data() {
+    return {
+      isShowBottom: false,
+      bottomStyle: ``,
+    };
   },
   methods: {
-    
+    changeBottomStyle() {
+      this.changeItemBottom()
+    },
+    // 改变当前组件的下边框颜色
+    changeItemBottom() {
+      this.bottomStyle = `1px solid #a0cfff !important`;
+    },
+    // 恢复当前组件的下边框样式为默认样式
+    recoverItemBottom() {
+      this.bottomStyle = ``;
+    },
   },
 };
 </script>
