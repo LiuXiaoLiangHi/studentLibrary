@@ -1,7 +1,7 @@
 <template>
   <el-menu-item class="header_menu_item" @click="changeBottomStyle" :style="{borderBottom:bottomStyle}">
     {{ itemProperty.title }}
-    <!-- <svg-icon icon-class="三角形" class="header-menu_item_svg" v-show="itemProperty.isShowSvg" /> -->
+    
   </el-menu-item>
 </template>
 <script>
