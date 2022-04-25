@@ -22,7 +22,7 @@
  
 <script>
 import { mapState } from "vuex";
-import DynamicMenu from '@/components/dynamic-menu'
+import DynamicMenu from './dynamic-menu.vue'
 export default {
   computed: {
     ...mapState(["isSidebarNavCollapse"]),

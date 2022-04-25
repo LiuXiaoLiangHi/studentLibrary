@@ -99,9 +99,9 @@ export default {
 .yyy{
   padding: 0 20px;
 }
-.el-form-item {
-  // margin-top: 12px;
-}
+// .el-form-item {
+//   // margin-top: 12px;
+// }
 .from_down {
   width: 100%;
   height: 30px;

@@ -1,8 +1,6 @@
-
 <!--
  * @Author: liang
  * @Description: 主页结构右侧视图层
- *  
 -->
 <template>
   <router-view class="content"></router-view>

@@ -57,7 +57,7 @@
 
 <script>
 import { mapState } from "vuex";
-import Hamburger from '@/components/Hamburger/index.vue'
+import Hamburger from './Hamburger/index.vue'
 // import Breadcrumb from '@/components/Breadcrumb/index.vue'
 export default {
   mounted() {

@@ -1,14 +1,5 @@
 /*
  * @Author: liang
- * @Date: 2022-03-14 08:31:06
- * @LastEditors: liang
- * @LastEditTime: 2022-03-18 15:44:44
- * @Description: file content
- * @FilePath: \my-home\src\store\modules\homeMessage.js
- */
- 
-/*
- * @Author: liang
  * @Description:用于存放home页面从后台接口获取的数据
  *  
  */

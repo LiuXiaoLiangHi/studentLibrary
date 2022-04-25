@@ -2,17 +2,9 @@
   <div class="menu-container">
     <template v-for="v in menuList">
       <!-- 有子路由在这渲染 -->
-      <el-submenu
-        :index="v.name"
-        v-if="v.children && v.children.length > 0"
-        :key="v.name"
-      >
+      <el-submenu :index="v.name" v-if="v.children && v.children.length > 0" :key="v.name">
         <template slot="title">
-          <svg-icon
-            v-if="v.meta && v.meta.icon"
-            :icon-class="v.meta.icon"
-            style="margin-right: 16px"
-          ></svg-icon>
+          <svg-icon v-if="v.meta && v.meta.icon" :icon-class="v.meta.icon" style="margin-right: 16px"></svg-icon>
           <span>{{ v.meta.name }}</span>
         </template>
         <el-menu-item-group>
@@ -20,16 +12,8 @@
         </el-menu-item-group>
       </el-submenu>
       <!-- 没有子路由在这渲染 -->
-      <el-menu-item
-        :key="v.name"
-        :index="v.name"
-        @click="gotoRoute(v.name)"
-        v-else
-      >
-        <svg-icon
-          v-if="v.meta && v.meta.icon"
-          :icon-class="v.meta.icon"
-        ></svg-icon>
+      <el-menu-item :key="v.name" :index="v.name" @click="gotoRoute(v.name)" v-else>
+        <svg-icon v-if="v.meta && v.meta.icon" :icon-class="v.meta.icon"></svg-icon>
         <span slot="title">{{ v.meta.name }}</span>
       </el-menu-item>
     </template>
@@ -63,7 +47,7 @@
       }
    ]
  */
-//#endregion 
+//#endregion
 export default {
   name: "my-nav",
   props: {

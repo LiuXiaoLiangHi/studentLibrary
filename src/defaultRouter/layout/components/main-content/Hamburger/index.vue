@@ -1,10 +1,5 @@
-
 <template>
-  <div
-    class="toggleNavCollapse"
-    :class="{ active: isSidebarNavCollapse }"
-    @click="toggleNavCollapse"
-  >
+  <div class="toggleNavCollapse" :class="{ active: isSidebarNavCollapse }" @click="toggleNavCollapse">
     <svg-icon icon-class="Icon-line-hamburger-left@1x"></svg-icon>
   </div>
 </template>
@@ -22,14 +17,14 @@ import { mapState } from "vuex";
 export default {
   name: "Hamburger",
   computed: {
-     ...mapState(["isSidebarNavCollapse"])
+    ...mapState(["isSidebarNavCollapse"]),
   },
   methods: {
     // 切换折叠栏的状态
-      toggleNavCollapse() {
+    toggleNavCollapse() {
       this.$store.commit("toggleNavCollapse");
     },
-  }
+  },
 };
 </script>
 

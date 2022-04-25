@@ -1,4 +1,3 @@
-
 <template>
   <el-form :model="formNopass" ref="formNopass" :rules="rulesNopass" class="xxx">
     <el-form-item label="" prop="userName">
@@ -18,20 +17,19 @@
     <el-form-item label="">
       <el-button type="primary" size="default" style="width: 100%" :disabled="true">登录</el-button>
     </el-form-item>
-    <UnderDevelopment/>
+  
   </el-form>
 </template>
 
 <script>
- import UnderDevelopment from '@/components/underDevelopment.vue'
 export default {
-  components:{
-    UnderDevelopment
+  components: {
+  
   },
   data() {
     return {
       iSLoginCodeButton: false,
-      dialogVisible:false,
+      // dialogVisible: false,
       formNopass: {
         userName: "",
         userCode: "",
@@ -46,12 +44,15 @@ export default {
       },
     };
   },
- methods: {
-   gainLoginCode(){
-      this.dialogVisible=true
-      console.log(this.dialogVisible);
-   }
- },
+  methods: {
+    gainLoginCode() {
+      // this.$root.$children[0].$refs.xxxx.$data.dialogVisible=true
+      this.$root.$children[0].underdev=true
+      // console.log(this.$root.$children[0].underdev);
+    //   // console.log( );
+    // // =true 
+    },
+  },
 };
 </script>
 

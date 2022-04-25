@@ -1,26 +1,25 @@
-/*
- * @Author: liang
- * @Date: 2022-02-25 09:31:31
- * @LastEditors: liang
- * @LastEditTime: 2022-03-07 16:57:20
- * @Description: file content
- * @FilePath: \作业\my-home\src\store\mutations.js
- */
 export default {
-    //登录  将token保存
+    //登录将token保存在state
     LOGIN_IN(state, token) {
         state.UserToken = token
     },
-    //退出登录  删除token
+    //退出登录删除token的值
     LOGIN_OUT(state) {
         state.UserToken = ''
     },
-    // 切换导航栏
+    // 切换导航栏折叠的状态
     toggleNavCollapse(state) {
         state.isSidebarNavCollapse = !state.isSidebarNavCollapse
     },
     //由于设置面包屑 （当前路由匹配符合的数组）
     setCrumbList(state, list) {
         state.crumbList = list
-    }
+    },
+    //切换正在开发的窗口是否显示
+    // open_Show_Development_Dialog(state){
+    //      state.isShowDevelopmentDialog=true
+    // },
+    // close_Show_Development_Dialog(state){
+    //     state.isShowDevelopmentDialog=false
+    // }
 }

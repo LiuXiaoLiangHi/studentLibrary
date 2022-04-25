@@ -2,23 +2,23 @@
 <template>
   <div :class="{navCollapsed:isSidebarNavCollapse}">
     <!-- 左侧导航栏 -->
-    <leftSide class="sidebar"></leftSide>
+    <LeftSide class="sidebar"></LeftSide>
     <!-- 右侧主体视图---加上top栏 -->
-    <mainContent></mainContent>
+    <MainContent></MainContent>
    </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import leftSide from './component/left_side/leftSide.vue'
- import mainContent from './component/main-content/index'
+import LeftSide from './components/left_side/leftSide.vue'
+ import MainContent from './components/main-content/index.vue'
 export default {
   computed: {
         ...mapState(['isSidebarNavCollapse'])
     },
     components:{
-      leftSide,
-      mainContent
+      LeftSide,
+      MainContent
     }
 }
 </script>
