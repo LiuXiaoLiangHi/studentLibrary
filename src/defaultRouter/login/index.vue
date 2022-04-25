@@ -1,10 +1,14 @@
 <template>
   <div class="login_content">
+    <!-- 一个简单的图片 -->
     <div class="login_over_top"></div>
+    <!-- TAG  登录页面的主体结构-->
     <el-card class="login_main">
-     
+      <!-- TAG  login的主体内容 -->
       <LoginMianContent />
+      <!-- TAG login的footer部分 -->
       <LoginFooter />
+      <DownAPP/>
     </el-card>
   </div>
 </template>
@@ -12,10 +16,12 @@
 <script>
 import LoginMianContent from "./components/Login-head/Login-mian-content.vue";
 import LoginFooter from "./components/Login-foot/Login-foot.vue";
+import DownAPP from './components/Login-foot/DownAPP.vue'
 export default {
   components: {
     LoginMianContent,
     LoginFooter,
+    DownAPP
   },
   data() {
     return {
@@ -55,7 +61,6 @@ export default {
   }
   .login_main {
     width: 380px;
-    height: 490px;
     margin: 0 auto;
     margin-bottom: 100px;
   }

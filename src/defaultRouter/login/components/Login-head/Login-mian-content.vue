@@ -50,5 +50,6 @@ export default {
   position: absolute;
   bottom: 0;
   left: 50%;
+  
 }
 </style>

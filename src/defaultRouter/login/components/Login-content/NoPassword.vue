@@ -1,59 +1,37 @@
 
 <template>
-    <el-form :model="formNopass" ref="formNopass" :rules="rulesNopass" class="xxx">
-      <el-form-item label="" prop="userName">
-        <el-input
-          v-model="formNopass.userName"
-          placeholder="手机号"
-          prefix-icon="el-icon-user-solid"
-          clearable
-          :disabled="true"
-        >
-        </el-input>
-      </el-form-item>
-      <el-form-item label="" prop="userCode">
-        <el-input
-          v-model="formNopass.userCode"
-          placeholder="请输入6位验证码"
-          prefix-icon="el-icon-thumb"
-          clearable
-          :disabled="false"
-        >
-          <el-button
-            slot="append"
-            icon="el-icon-search"
-            style="width: 70px; padding: 0"
-            :disabled="iSLoginCodeButton"
-            @click="gainLoginCode"
-            >获取</el-button
-          >
-        </el-input>
-      </el-form-item>
-      <div class="from_down">
-        <span>
-          <el-link type="primary" @click="receptionVoiceCode"
-            >接收语音验证码</el-link
-          >
-        </span>
-      </div>
-      <el-form-item label="">
-        <el-button
-          type="primary"
-          size="default"
-          style="width: 100%"
-          :disabled="true"
-          >登录</el-button
-        >
-      </el-form-item>
-    </el-form>
+  <el-form :model="formNopass" ref="formNopass" :rules="rulesNopass" class="xxx">
+    <el-form-item label="" prop="userName">
+      <el-input v-model="formNopass.userName" placeholder="手机号" prefix-icon="el-icon-user-solid" clearable>
+      </el-input>
+    </el-form-item>
+    <el-form-item label="" prop="userCode">
+      <el-input v-model="formNopass.userCode" placeholder="请输入6位验证码" prefix-icon="el-icon-thumb" clearable :disabled="false">
+        <el-button slot="append" icon="el-icon-search" style="width: 70px; padding: 0" :disabled="iSLoginCodeButton" @click="gainLoginCode">获取</el-button>
+      </el-input>
+    </el-form-item>
+    <div class="from_down">
+      <span>
+        <el-link type="primary">接收语音验证码</el-link>
+      </span>
+    </div>
+    <el-form-item label="">
+      <el-button type="primary" size="default" style="width: 100%" :disabled="true">登录</el-button>
+    </el-form-item>
+    <UnderDevelopment/>
+  </el-form>
 </template>
 
 <script>
-import { getLoginCode } from "@/api/createCode";
+ import UnderDevelopment from '@/components/underDevelopment.vue'
 export default {
+  components:{
+    UnderDevelopment
+  },
   data() {
     return {
       iSLoginCodeButton: false,
+      dialogVisible:false,
       formNopass: {
         userName: "",
         userCode: "",
@@ -68,29 +46,18 @@ export default {
       },
     };
   },
-  methods: {
-    receptionVoiceCode() {},
-    async gainLoginCode() {
-      let { data } = await getLoginCode();
-      this.formNopass.userCode = data.codeMa;
-      this.iSLoginCodeButton = true;
-      let h = this.$createElement;
-      this.$notify({
-        title: "发送成功",
-        duration:2000,
-        message: h("i", { style: "color: teal" }, "验证码60s秒内只可发送一次"),
-      });
-      setTimeout(() => {
-         this.iSLoginCodeButton = false
-      },  60000);
-    },
-  },
+ methods: {
+   gainLoginCode(){
+      this.dialogVisible=true
+      console.log(this.dialogVisible);
+   }
+ },
 };
 </script>
 
 <style lang="less" scoped>
-.xxx{
-  padding: 0 20px
+.xxx {
+  padding: 0 20px;
 }
 
 .el-form-item {
