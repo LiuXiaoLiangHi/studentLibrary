@@ -1,11 +1,11 @@
 <template>
   <el-form :model="formNopass" ref="formNopass" :rules="rulesNopass" class="styleNopass">
     <el-form-item label="" prop="userPhoneNumber">
-      <el-input v-model="formNopass.userPhoneNumber" placeholder="手机号" prefix-icon="el-icon-user-solid" clearable>
+      <el-input v-model="formNopass.userPhoneNumber" placeholder="手机号" prefix-icon="el-icon-user-solid" clearable required>
       </el-input>
     </el-form-item>
     <el-form-item label="" prop="userCode">
-      <el-input v-model="formNopass.userCode" placeholder="请输入6位验证码" prefix-icon="el-icon-thumb" clearable :disabled="false">
+      <el-input v-model="formNopass.userCode" placeholder="请输入6位验证码" prefix-icon="el-icon-thumb" clearable :disabled="false" required>
         <el-button slot="append" icon="el-icon-search" style="width: 70px; padding: 0" :disabled="isForbiddenCodeButton" @click="gainLoginCode">获取</el-button>
       </el-input>
     </el-form-item>
@@ -22,9 +22,26 @@
 </template>
 
 <script>
+import { isMobilePhoneNumber } from "@/utils/regular-verify";
 export default {
-  components: {},
   data() {
+    const rulePhone = (rule, value, callback) => {
+      if (value === "") {
+        return callback(new Error("手机号不能为空！"));
+      }
+      if (!isMobilePhoneNumber(value)) {
+        return callback(new Error("手机号输入不正确哦"));
+      }
+    };
+    const ruleCode = (rule, value, callback) => {
+      if (value === "") {
+        return callback(new Error("验证码不能为空！"));
+      }
+      if (value.length !== 6) {
+        return callback(new Error("验证码格式不正确哦"));
+      }
+    };
+
     return {
       isForbiddenCodeButton: false, // 获取验证码按钮是否禁用
       formNopass: {
@@ -33,12 +50,8 @@ export default {
       },
       // 表单校验规则
       rulesNopass: {
-        userPhoneNumber: [
-          { required: true, message: "请输入正确的手机号", trigger: "blur" },
-        ],
-        userCode: [
-          { required: true, message: "请输入验证码", trigger: "blur" },
-        ],
+        userPhoneNumber: [{ validator: rulePhone, trigger: "blur" }],
+        userCode: [{ validator: ruleCode, trigger: "blur" }],
       },
     };
   },
@@ -53,6 +66,13 @@ export default {
       // 没有开发，使用未开放功能组件
       this.$root.$children[0].isShowUnder = true;
     },
+    // 组件销毁前将数据初始化
+    beforeDestroy() {
+      this.formNopass = {
+        userPhoneNumber: "",
+        userCode: "",
+      };
+    },
   },
 };
 </script>
@@ -60,17 +80,17 @@ export default {
 <style lang="less" scoped>
 .styleNopass {
   padding: 0 20px;
-}
-.from_down {
-  width: 100%;
-  height: 30px;
-  display: flex;
-  justify-content: flex-end;
-}
-.from_down > span {
-  display: inline-block;
-  font-size: 14px;
-  color: #8590a6;
+  .from_down {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    & > span {
+      display: inline-block;
+      font-size: 14px;
+      color: #8590a6;
+    }
+  }
 }
 </style>
  
