@@ -7,7 +7,7 @@
       <NoPassword />
     </el-tab-pane>
     <el-tab-pane name="hasPassword">
-      <span slot="label">免密码登录
+      <span slot="label">密码登录
         <svg-icon icon-class="三角形" class="login_main_tabs_svg" v-show="!svg_show" />
       </span>
       <PasswordToLogin />
@@ -25,14 +25,21 @@ export default {
   },
   data() {
     return {
-      activeName: "noPassword", // 当前选中的tabs
+      activeName: "noPassword", // 当前选中的tabs的name
       svg_show: true, //控制tabs对应的svg是否显示
+      lastActiveName: "noPassword",
     };
   },
   methods: {
     //点击每一个tas都会触发
-    handleClick() {
-      this.isSvgShow(); // 切换svg的状态
+    handleClick(tab) {
+      console.log(tab.name);
+      if(this.lastActiveName == tab.name){
+        console.log('重复点击了同一个Tab');
+      }else{
+        this.lastActiveName=tab.name
+        this.isSvgShow(); // 切换svg的状态
+      }
     },
     //0.3秒后切换svg是否显示
     isSvgShow() {
@@ -50,6 +57,5 @@ export default {
   position: absolute;
   bottom: 0;
   left: 50%;
-  
 }
 </style>

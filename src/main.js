@@ -7,7 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from './config/httpConfig'  // 引入二次封装的axios
 import '@/style/css/index.less' //引入部分样式
 import '@/icons' // 全局注册svg组件
-import '@/components/underDevelopment/index.js' // 全局注册功能未开发弹窗组件
+import '@/components/UndevelopedFeatures/index.js' // 全局注册功能未开发弹窗组件
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
@@ -77,9 +77,6 @@ new Vue({
   store,
   beforeCreate(){
     Vue.prototype.$bus=this
-  },
-  mounted() {
-      console.log("ref",this)
   },
   render: h => h(App)
 }).$mount('#app')

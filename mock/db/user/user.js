@@ -1,13 +1,3 @@
-/*
- * @Author: liang
- * @Date: 2022-04-18 14:25:41
- * @LastEditors: LAPTOP-LD525C2O
- * @LastEditTime: 2022-04-21 16:04:46
- * @Description: file content
- * @FilePath: \jsonServerMock\mock\db\user\user.js
- */
- 
-
 /**
  * 改文件存储的是lowdb数据库的核心
  * -----lowdb---数据库init（）
