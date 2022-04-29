@@ -1,16 +1,9 @@
-/*
- * @Author: liang
- * @Date: 2022-03-04 08:44:08
- * @LastEditors: LAPTOP-LD525C2O
- * @LastEditTime: 2022-04-21 22:00:16
- * @Description: file content
- * @FilePath: \作业\my-home\src\router\index.js
- */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Login from '../defaultRouter/login/index.vue'
+import register from '../defaultRouter/register/index.vue'
 import Layout from '../defaultRouter/layout/index.vue'
 import Forbidden from '../defaultRouter/403/index.vue'
 import NotFound from '../defaultRouter/404/index.vue'
@@ -21,6 +14,10 @@ export default new VueRouter({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/register',
+      component: register
     }
   ]
 })
@@ -46,7 +43,7 @@ export const DynamicRoutes = [
         meta: {
           name: '首页',
           icon: 'fa fa-home',
-          iconColor:'color:#f0c02f',
+          iconColor: 'color:#f0c02f',
         }
       }
     ]

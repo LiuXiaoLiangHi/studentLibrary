@@ -1,5 +1,4 @@
- 
-<template>
+ <template>
   <el-form :model="loginForm" ref="loginForm" :rules="loginRules" class="yyy">
     <el-form-item label="" prop="username">
       <el-input v-model="loginForm.username" placeholder="账号名" prefix-icon="el-icon-user-solid" clearable required>
@@ -14,7 +13,7 @@
     </el-form-item>
     <div class="from_down">
       <span>
-        <el-link type="info">用户注册?</el-link>
+        <router-link to="/register">用户注册?</router-link>
       </span>
       <span>
         <el-link type="primary">忘记密码？</el-link>
@@ -45,7 +44,9 @@ export default {
         callback(new Error("密码不能为空哦"));
       }
       if (!isPasswordLegal(value)) {
-        callback(new Error("密码必须是大小写字母和数字的组合，且不能有特殊符号哦"));
+        callback(
+          new Error("密码必须是大小写字母和数字的组合，且不能有特殊符号哦")
+        );
       }
     };
     return {
@@ -68,35 +69,37 @@ export default {
     };
   },
   methods: {
- 
- async   submitForm() { 
-      //  
-      let validatorResult =this.$refs['loginForm'].$children[0].validateState!=='error'&&this.$refs['loginForm'].$children[1].validateState!=='error'
-       if(validatorResult==false){
-         console.log('验证不通过，不能登录');
-       }else{
-       try {
-            //登录获取token
-            let data = await login({
-              username: this.loginForm.username,
-              password: this.loginForm.password,
-            });
-            Message.success("登录成功");
-            // //将data中的token 赋值给变量token
-            let token = data.token;
-            // //将token保持到store中
-            this.$store.commit("LOGIN_IN", token);
-            // //进行路由跳转
-            this.$router.replace("/").catch((err) => {
-              console.log(err);
-            });
-          } catch (e) {
-            console.log(e);
-          }
-       }
+    async submitForm() {
+      let validatorResult =
+        this.$refs["loginForm"].$children[0].validateState !== "error" &&
+        this.$refs["loginForm"].$children[1].validateState !== "error";
+      if (validatorResult == false) {
+        console.log("验证不通过，不能登录");
+        this.$alert("你当前用户名或密码有误哦，请检查后再提交", "提示", {
+          confirmButtonText: "确定",
+          callback: () => {},
+        });
+      } else {
+        try {
+          //登录获取token
+          let data = await login({
+            username: this.loginForm.username,
+            password: this.loginForm.password,
+          });
+          Message.success("登录成功");
+          // //将data中的token 赋值给变量token
+          let token = data.token;
+          // //将token保持到store中
+          this.$store.commit("LOGIN_IN", token);
+          // //进行路由跳转
+          this.$router.replace("/").catch((err) => {
+            console.log(err);
+          });
+        } catch (e) {
+          console.log(e);
+        }
       }
-   
-   
+    },
   },
   computed: {
     is_or__diable() {

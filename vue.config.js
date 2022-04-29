@@ -1,11 +1,3 @@
-/*
- * @Author: liang
- * @Date: 2022-02-21 15:00:38
- * @LastEditors: LAPTOP-LD525C2O
- * @LastEditTime: 2022-04-20 21:27:51
- * @Description: file content
- * @FilePath: \作业\my-home\vue.config.js
- */
 const path = require('path');//引入path模块
 function resolve(dir) {
     return path.join(__dirname, dir)//path.join(__dirname)设置绝对路径
