@@ -126,8 +126,8 @@ export default {
       ) {
         let result = await fetchRegister({
           userName: this.reg_form.userName,
-          userPhoneNumber: this.reg_form.userPhoneNumber,
-          userPassword: this.reg_form.userPassword,
+          mobile: this.reg_form.userPhoneNumber,
+          password: this.reg_form.userPassword,
         });
         if (result == undefined) {
           Message.success("注册成功，1秒后跳转到登录页面");

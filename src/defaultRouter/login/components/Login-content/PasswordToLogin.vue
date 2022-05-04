@@ -1,7 +1,7 @@
 <template>
   <el-form :model="loginForm" ref="loginForm" :rules="loginRules" class="yyy">
-    <el-form-item label="" prop="username">
-      <el-input v-model="loginForm.username" placeholder="用户名" prefix-icon="el-icon-user-solid" clearable required>
+    <el-form-item label="" prop="userName">
+      <el-input v-model="loginForm.userName" placeholder="用户名" prefix-icon="el-icon-user-solid" clearable required>
       </el-input>
     </el-form-item>
     <el-form-item label="" prop="password">
@@ -30,9 +30,9 @@ import { validateUserName, validatePassword } from "@/utils/regular-verify";
 export default {
   data() {
     return {
-      loginForm: { username: "", password: "" },
+      loginForm: { userName: "", password: "" },
       loginRules: {
-        username: [
+        userName: [
           { required: true, trigger: "blur", validator: validateUserName },
         ],
         password: [
@@ -55,7 +55,7 @@ export default {
         try {
           //登录获取token
           let data = await login({
-            username: this.loginForm.username,
+            userName: this.loginForm.userName,
             password: this.loginForm.password,
           });
           Message.success("登录成功");

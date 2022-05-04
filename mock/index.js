@@ -8,8 +8,9 @@ import expressJWT from 'express-jwt'
 import bodyParser from 'body-parser'
 
 import { PRIVITE_KEY } from './config/index.js'
-import { changeUserPassword, readUserInfoToLogin,registerUser} from './db/user/changeUserInfo.js'
+import { changeUserPassword, readUserInfoToLogin,registerUser,clearNow_token} from './db/user/changeUserInfo.js'
 import { userInfoInit } from './db/user/user.js'
+import {param2Obj} from './utils/index.js'
 // 创建server
 let server = jsonServer.create()
 // 允许使用中间件
@@ -39,11 +40,15 @@ userInfoInit()
 // //登录接口
 server.post('/login', async (req, res) => {
     // 从请求体中获取用户名和密码
-    const { username, password } = req.body;
-    let result = await readUserInfoToLogin(username, password)
+    const { userName, password } = req.body;
+    let result = await readUserInfoToLogin(userName, password)
     res.send(result)
 })
  server.get("/info",(req,res,next)=>{
+  
+  let params= param2Obj(req.url)
+  let {userName,uu_id}=params
+  // ----从数据库查找相应的数据进行返回---
     res.send({
       "code":"0",
       data:{
@@ -61,16 +66,22 @@ server.post('/login', async (req, res) => {
 // 注册接口
 server.post('/register', async(req, res) => {
   console.log(req.body);
-  const {userName,userPhoneNumber,userPassword} =req.body
-  let result= await registerUser(userName,userPassword,userPhoneNumber)
+  const {userName,mobile,password} =req.body
+  let result= await registerUser(userName,password,mobile)
   res.send(result)
 })
 // 修改用户信息接口只支持修改密码
 server.put('/update', async (req, res) => {
     //     //获取需要修改的用户名与密码
     const { uu_id, userName, oldPassword, newPassword } = req.body;
-    let reslust = await changeUserPassword(uu_id,userName,oldPassword,newPassword)
-    res.send(reslust)
+    let result = await changeUserPassword(uu_id,userName,oldPassword,newPassword)
+    res.send(result)
+})
+server.post('/logout',async (req,res)=>{
+  const { userName, uu_id } = req.body;
+  let result= await clearNow_token()
+  console.log(result);
+  res.send(result)
 })
 //删除用户的接口
 // server.delete()

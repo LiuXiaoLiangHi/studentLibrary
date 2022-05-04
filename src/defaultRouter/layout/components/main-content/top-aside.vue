@@ -58,6 +58,7 @@
 <script>
 import { mapState } from "vuex";
 import Hamburger from './Hamburger/index.vue'
+import {fetchLogout} from '@/api/permission'
 // import Breadcrumb from '@/components/Breadcrumb/index.vue'
 export default {
   mounted() {
@@ -81,7 +82,8 @@ export default {
     toggleNavCollapse() {
       this.$store.commit("toggleNavCollapse");
     },
-    loginOut() {
+   async loginOut() {
+     await fetchLogout()
       this.$store.commit("LOGIN_OUT");
       /* 防止切换角色时addRoutes重复添加路由导致出现警告 */
       window.location.reload();

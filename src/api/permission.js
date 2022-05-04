@@ -17,3 +17,7 @@ export  function fetchPermission() {
 export function fetchRegister(data){
     return axios.post('/register',data)
 }
+// 退出登录
+export function fetchLogout(data){
+    return axios.post('/logout',data)
+}
