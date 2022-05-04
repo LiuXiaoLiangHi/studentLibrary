@@ -2,8 +2,9 @@ const path = require('path');//引入path模块
 function resolve(dir) {
     return path.join(__dirname, dir)//path.join(__dirname)设置绝对路径
 }
+//环境
 const proxyTargetMap = {
-    school: 'http://10.20.142.184:3000',
+    xxx: 'xxxx',
     test: 'http://localhost:3000',
     prod:'xxxxxx'
 }

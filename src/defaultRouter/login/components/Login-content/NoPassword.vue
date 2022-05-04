@@ -17,31 +17,13 @@
     <el-form-item label="">
       <el-button type="primary" size="default" style="width: 100%" :disabled="true">登录</el-button>
     </el-form-item>
-
   </el-form>
 </template>
 
 <script>
-import { isMobilePhoneNumber } from "@/utils/regular-verify";
+import {validatePhone,validateAuthCode} from '@/utils/regular-verify'
 export default {
   data() {
-    const rulePhone = (rule, value, callback) => {
-      if (value === "") {
-        return callback(new Error("手机号不能为空！"));
-      }
-      if (!isMobilePhoneNumber(value)) {
-        return callback(new Error("手机号输入不正确哦"));
-      }
-    };
-    const ruleCode = (rule, value, callback) => {
-      if (value === "") {
-        return callback(new Error("验证码不能为空！"));
-      }
-      if (value.length !== 6) {
-        return callback(new Error("验证码格式不正确哦"));
-      }
-    };
-
     return {
       isForbiddenCodeButton: false, // 获取验证码按钮是否禁用
       formNopass: {
@@ -50,8 +32,8 @@ export default {
       },
       // 表单校验规则
       rulesNopass: {
-        userPhoneNumber: [{ validator: rulePhone, trigger: "blur" }],
-        userCode: [{ validator: ruleCode, trigger: "blur" }],
+        userPhoneNumber: [{ validator: validatePhone, trigger: "blur" }],
+        userCode: [{ validator: validateAuthCode, trigger: "blur" }],
       },
     };
   },

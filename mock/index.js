@@ -8,7 +8,7 @@ import expressJWT from 'express-jwt'
 import bodyParser from 'body-parser'
 
 import { PRIVITE_KEY } from './config/index.js'
-import { changeUserPassword, readUserInfoToLogin } from './db/user/changeUserInfo.js'
+import { changeUserPassword, readUserInfoToLogin,registerUser} from './db/user/changeUserInfo.js'
 import { userInfoInit } from './db/user/user.js'
 // 创建server
 let server = jsonServer.create()
@@ -40,8 +40,8 @@ userInfoInit()
 server.post('/login', async (req, res) => {
     // 从请求体中获取用户名和密码
     const { username, password } = req.body;
-    let reslust = await readUserInfoToLogin(username, password)
-    res.send(reslust)
+    let result = await readUserInfoToLogin(username, password)
+    res.send(result)
 })
  server.get("/info",(req,res,next)=>{
     res.send({
@@ -59,7 +59,12 @@ server.post('/login', async (req, res) => {
     })
   })
 // 注册接口
-// server.post('/register', (req, res) => {
+server.post('/register', async(req, res) => {
+  console.log(req.body);
+  const {userName,userPhoneNumber,userPassword} =req.body
+  let result= await registerUser(userName,userPassword,userPhoneNumber)
+  res.send(result)
+})
 //     //获取注册的用户名与密码
 //     const { userName, password } = req.body;
 //     // 读取所有的用户信息

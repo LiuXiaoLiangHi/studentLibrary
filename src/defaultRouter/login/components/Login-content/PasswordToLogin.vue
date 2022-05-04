@@ -1,7 +1,7 @@
- <template>
+<template>
   <el-form :model="loginForm" ref="loginForm" :rules="loginRules" class="yyy">
     <el-form-item label="" prop="username">
-      <el-input v-model="loginForm.username" placeholder="账号名" prefix-icon="el-icon-user-solid" clearable required>
+      <el-input v-model="loginForm.username" placeholder="用户名" prefix-icon="el-icon-user-solid" clearable required>
       </el-input>
     </el-form-item>
     <el-form-item label="" prop="password">
@@ -20,50 +20,23 @@
       </span>
     </div>
   </el-form>
-
 </template>
 
 <script>
-import { login } from "@/api/permission";
+import { login } from "@/api/permission"; // 登录方法
 import { Message } from "element-ui";
-import { isAccountLegal, isPasswordLegal } from "@/utils/regular-verify";
+import { validateUserName, validatePassword } from "@/utils/regular-verify";
+
 export default {
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (value.length == "") {
-        callback(new Error("账号名不能为空哦"));
-      }
-      if (!isAccountLegal(value)) {
-        callback(
-          new Error("账号格式错误,账号名需要字母开头,长度为6~16个字符哦")
-        );
-      }
-    };
-    const validatePass = (rule, value, callback) => {
-      if (value == "") {
-        callback(new Error("密码不能为空哦"));
-      }
-      if (!isPasswordLegal(value)) {
-        callback(
-          new Error("密码必须是大小写字母和数字的组合，且不能有特殊符号哦")
-        );
-      }
-    };
     return {
-      loginForm: {
-        username: "",
-        password: "",
-      },
+      loginForm: { username: "", password: "" },
       loginRules: {
         username: [
-          {
-            required: true,
-            trigger: "blur",
-            validator: validateUsername,
-          },
+          { required: true, trigger: "blur", validator: validateUserName },
         ],
         password: [
-          { required: true, trigger: "blur", validator: validatePass },
+          { required: true, trigger: "blur", validator: validatePassword },
         ],
       },
     };
@@ -74,7 +47,6 @@ export default {
         this.$refs["loginForm"].$children[0].validateState !== "error" &&
         this.$refs["loginForm"].$children[1].validateState !== "error";
       if (validatorResult == false) {
-        console.log("验证不通过，不能登录");
         this.$alert("你当前用户名或密码有误哦，请检查后再提交", "提示", {
           confirmButtonText: "确定",
           callback: () => {},
@@ -127,4 +99,4 @@ export default {
   font-size: 14px;
   color: #8590a6;
 }
-</style>    
+</style>

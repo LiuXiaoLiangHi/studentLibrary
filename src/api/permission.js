@@ -13,3 +13,7 @@ export function login(data) {
 export  function fetchPermission() {
      return  axios.get('/info')
 }
+//用户注册
+export function fetchRegister(data){
+    return axios.post('/register',data)
+}

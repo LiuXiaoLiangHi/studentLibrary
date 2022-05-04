@@ -10,12 +10,12 @@
           注册即送0元大礼包
         </p>
       </div>
-      <el-form :model="reg_form" ref="form" label-width="0px" :inline="false" size="normal" class="reg-from" :rules="reg_rueus">
+      <el-form :model="reg_form" ref="reg_form" label-width="0px" :inline="false" size="normal" class="reg-from" :rules="reg_rueus">
         <el-form-item label="" prop="userName">
-          <el-input v-model="reg_form.userName" placeholder="用户名（字母开头，6~16位数字字母）" class="reg_input"></el-input>
+          <el-input v-model="reg_form.userName" placeholder="用户名（字母开头，6~16位数字字母）" class="reg_input" clearable></el-input>
         </el-form-item>
         <el-form-item label="" prop="userPhoneNumber">
-          <el-input v-model="reg_form.userPhoneNumber" placeholder="请输入手机号码" class="reg_input"></el-input>
+          <el-input v-model="reg_form.userPhoneNumber" placeholder="请输入手机号码" class="reg_input" clearable></el-input>
         </el-form-item>
         <el-form-item label="" prop="userCode">
           <el-input v-model="reg_form.userCode" placeholder="请输入手机短信验证码" clearable required>
@@ -23,7 +23,7 @@
           </el-input>
         </el-form-item>
         <el-form-item label="" prop="userPassword">
-          <el-input v-model="reg_form.userPassword" placeholder="请输入密码（6~16位数字字母）" class="reg_input"></el-input>
+          <el-input v-model="reg_form.userPassword" placeholder="请输入密码（6~16位数字字母）" class="reg_input" show-password clearable></el-input>
         </el-form-item>
         <el-form-item label="" prop="reg_checked">
           <el-checkbox v-model="reg_form.reg_checked">
@@ -35,31 +35,26 @@
           </span>
         </el-form-item>
         <el-form-item label="">
-          <el-button :type="reg_form.buttonType" style="width:100%" :disabled="!reg_form.reg_checked">登录</el-button>
+          <el-button :type="reg_form.buttonType" style="width:100%" :disabled="!reg_form.reg_checked" @click=register>登录</el-button>
         </el-form-item>
       </el-form>
-
     </div>
   </div>
-
 </template>
 <script>
 // 登录接口
-// import fetchRegister from '@/api/fetchRegister'
-import { isAccountLegal } from "@/utils/regular-verify";
-
+import {fetchRegister} from '@/api/permission'
+import {
+  validateUserName,
+  validatePhone,
+  validateAuthCode,
+  validatePassword,
+} from "@/utils/regular-verify";
 export default {
+  components: {
+  
+  },
   data() {
-     const validateUsername = (rule, value, callback) => {
-      if (value.length == "") {
-        callback(new Error("账号名不能为空哦"));
-      }
-      if (!isAccountLegal(value)) {
-        callback(
-          new Error("账号格式错误,账号名需要字母开头,长度为6~16个字符哦")
-        );
-      }
-    };
     return {
       reg_form: {
         userName: "",
@@ -74,7 +69,28 @@ export default {
           {
             required: true,
             trigger: "blur",
-            validator: validateUsername,
+            validator: validateUserName,
+          },
+        ],
+        userPhoneNumber: [
+          {
+            required: true,
+            trigger: "blur",
+            validator: validatePhone,
+          },
+        ],
+        userCode: [
+          {
+            required: true,
+            trigger: "blur",
+            validator: validateAuthCode,
+          },
+        ],
+        userPassword: [
+          {
+            required: true,
+            trigger: "blur",
+            validator: validatePassword,
           },
         ],
       },
@@ -91,6 +107,27 @@ export default {
           this.reg_form.buttonType = "info";
         }
       },
+    },
+  },
+  methods: {
+    register() {
+      let result_0 = this.$refs["reg_form"].$children[0].validateState !== "error"
+       let result_1 = this.$refs["reg_form"].$children[1].validateState !== "error"
+         let result_2 = this.$refs["reg_form"].$children[2].validateState !== "error"
+       let result_3 = this.$refs["reg_form"].$children[3].validateState !== "error"
+       if(result_0==true&&result_1==true&&result_2==true&&result_3==true){
+         fetchRegister({
+           userName:this.reg_form.userName,
+           userPhoneNumber:this.reg_form.userPhoneNumber,
+           userPassword:this.reg_form.userPassword
+         })
+       }
+      //        this.$alert(` <el-result icon="success" title="成功提示" subTitle="请根据提示进行操作"> <template slot="extra">
+      //     <el-button type="primary" size="medium">返回</el-button>
+      //   </template>
+      // </el-result>`, 'HTML 片段', {
+      //       dangerouslyUseHTMLString: true
+      //     });
     },
   },
 };
