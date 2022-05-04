@@ -2,7 +2,7 @@ POST   http://localhost:3000/register
 content-type: application/json
 
 {
-    "userName": "a123456",
+    "userName": "d2517119123",
     "userPhoneNumber": "18000721452",
     "userPassword":"2517119123aA",
      "userCode":123456

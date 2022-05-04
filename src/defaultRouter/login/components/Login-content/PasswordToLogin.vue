@@ -13,7 +13,7 @@
     </el-form-item>
     <div class="from_down">
       <span>
-        <router-link to="/register">用户注册?</router-link>
+        <router-link to="/register" class="from_down_a">用户注册?</router-link>
       </span>
       <span>
         <el-link type="primary">忘记密码？</el-link>
@@ -64,7 +64,7 @@ export default {
           // //将token保持到store中
           this.$store.commit("LOGIN_IN", token);
           // //进行路由跳转
-          this.$router.replace("/").catch((err) => {
+          this.$router.replace("/home").catch((err) => {
             console.log(err);
           });
         } catch (e) {
@@ -93,6 +93,12 @@ export default {
   height: 30px;
   display: flex;
   justify-content: space-between;
+  .from_down_a {
+    color: #409EFF;
+    &:hover {
+      color: #409EFF;
+    }
+  }
 }
 .from_down > span {
   display: inline-block;

@@ -65,43 +65,6 @@ server.post('/register', async(req, res) => {
   let result= await registerUser(userName,userPassword,userPhoneNumber)
   res.send(result)
 })
-//     //获取注册的用户名与密码
-//     const { userName, password } = req.body;
-//     // 读取所有的用户信息
-//     fs.readFile('./mock/db/db.json', 'utf-8', (error, data) => {
-//         try {
-//             //读取失败
-//             if (error) {
-//                 throw new Error('因为某种原因读取文件失败')
-//                 return
-//             }
-//             return new Promise((resolve, reject) => {
-//                 // 读取成功，将字符串转换为数组
-//                 let userIfoArray = JSON.parse(data.toString()).userInfo;
-//                 // 将新的数据添加到数组中
-//                 userIfoArray.push({ userName, password })
-//                 // 将对象转为 Json 格式并写入文件
-//                 fs.writeFile('./mock/db/db.json', JSON.stringify({ "userInfo": userIfoArray }), (error) => {
-//                     if (error) {
-//                         throw new Error('因为某种原因写入文件失败')
-//                         return
-//                     }
-//                     resolve({ code: 0, warn: "注册成功" })
-//                 })
-//             }).then((resData) => {
-//                 res.send(resData)
-//             })
-//         } catch (error) {
-//             console.log(error);
-//             res.statusCode = 500;
-//             res.send({
-//                 code: -1,
-//                 errMessages: '服务端错误'
-//             })
-//         }
-//     }
-//     )
-// })
 // 修改用户信息接口只支持修改密码
 server.put('/update', async (req, res) => {
     //     //获取需要修改的用户名与密码
@@ -109,52 +72,6 @@ server.put('/update', async (req, res) => {
     let reslust = await changeUserPassword(uu_id,userName,oldPassword,newPassword)
     res.send(reslust)
 })
-//     console.log(userName, oldPassword, newPassword);
-//     fs.readFile('./mock/db/db.json', 'utf-8', (error, data) => {
-//         try {
-//             //读取失败
-//             if (error) {
-//                 throw new Error('因为某种原因读取文件失败')
-//                 return
-//             }
-//             return new Promise((resolve, reject) => {
-//                 // 读取成功，将字符串转换为对象后进行遍历
-//                 let userIfoArray = JSON.parse(data.toString()).userInfo;
-//                 console.log(userIfoArray);
-//                 userIfoArray.forEach((element, index) => {
-//                     if (element.userName == userName && element.password == oldPassword) {
-//                         console.log('sdfsd');
-//                         userIfoArray[index].password = newPassword
-//                         fs.writeFile('./mock/db/db.json', JSON.stringify({ "userInfo": userIfoArray }), (error) => {
-//                             if (error) {
-//                                 throw new Error('因为某种原因写入文件失败')
-//                                 return
-//                             }
-//                             resolve({ code: 0, warn: "修改密码成功" })
-//                         })
-//                     }else{
-//                         if(index==userIfoArray.length-1){
-//                             resolve({
-//                                 code: -1,
-//                                 errMessages: '用户名或密码错误请检查后重新输入'
-//                             })
-//                         }
-//                     }
-//                 })
-//             })
-//                 .then((resData) => {
-//                     res.send(resData)
-//                 })
-//         } catch (error) {
-//             console.log(error);
-//             res.statusCode = 500;
-//             res.send({
-//                 code: -1,
-//                 errMessages: '服务端错误'
-//             })
-//         }
-//     })
-// })
 //删除用户的接口
 // server.delete()
 server.listen(3000, () => {

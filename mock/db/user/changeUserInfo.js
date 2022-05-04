@@ -86,15 +86,14 @@ export function registerUser(userName, userPassword, userPhoneNumber) {
                         password: userPassword,
                         phone: userPhoneNumber
                     })
-                    userDb.write()
                     reslove({
-                        code:0,
-                        msg: '注册成功'
+                        code: 0,
+                        msg: '注册成功' 
                     })
+                    userDb.write()      
                 }
-
-            }else{
-                     if (index == userInfo.length - 1) {
+            } else {
+                if (index == userInfo.length - 1) {
                     reslove({
                         code: 1,
                         msg: '注册失败,当前用户存在哦'

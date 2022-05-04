@@ -32,16 +32,21 @@ export default {
   width: 100%;
   height: 110px !important;
   .userAgreement {
-   font-size: 14px;
-   color: #8590A6;
-  
+    font-size: 14px;
+    color: #8590a6;
+    a {
+      color: #409EFF;
+    }
+    a:hover {
+      color: #409EFF;
+    }
   }
   .Login_social_media_account {
     height: 60px;
     line-height: 60px;
     display: flex;
     flex-direction: row;
-     color: #8590A6;
+    color: #8590a6;
   }
   .social_media_account_group {
     height: 100%;
