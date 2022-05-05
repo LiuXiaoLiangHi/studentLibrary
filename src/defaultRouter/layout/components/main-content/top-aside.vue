@@ -74,16 +74,17 @@ export default {
   },
   computed: {
     ...mapState(["isSidebarNavCollapse", "crumbList"]),
-    ...mapState("permission", ["avatar", "account"]),
+    ...mapState("permission", ["avatar", "account","uu_id"]),
   },
   methods: {
-    
-    
     toggleNavCollapse() {
       this.$store.commit("toggleNavCollapse");
     },
    async loginOut() {
-     await fetchLogout()
+     await fetchLogout({
+        userName: this.$store.state.permission.account,
+          uu_id:  this.$store.state.permission.uu_id
+     })
       this.$store.commit("LOGIN_OUT");
       /* 防止切换角色时addRoutes重复添加路由导致出现警告 */
       window.location.reload();

@@ -5,35 +5,135 @@
       "userName": "a2517119123",
       "password": "2517119123aA",
       "mobile": 18770640208,
-      "now_token": ""
+      "now_token": "",
+      "avatar": "",
+      "roles": "super_admin",
+      "isAllowDeleteUSer": false,
+      "router": [
+        "index",
+        "students-management",
+        "students-statistical",
+        "students-classList",
+        "students-information",
+        "book-management",
+        "book-borrow",
+        "book-return",
+        "book-statistical",
+        "book-information",
+        "admin-management",
+        "admin-center",
+        "admin-permission",
+        "admin-userList",
+        "systemSet"
+      ]
     },
     {
       "uu_id": "FC0B55E8-B054-4F39-38C9-3DC8260D1740",
       "userName": "b3108504029",
       "password": "2517119123aA",
       "mobile": 18460007401,
-      "now_token": ""
+      "now_token": "",
+      "avatar": "",
+      "roles": "general_admin",
+      "isAllowDeleteUSer": true,
+      "router": [
+        "index",
+        "students-management",
+        "students-statistical",
+        "students-classList",
+        "students-information",
+        "book-management",
+        "book-borrow",
+        "book-return",
+        "book-statistical",
+        "book-information",
+        "admin-management",
+        "admin-center",
+        "admin-permission",
+        "admin-userList",
+        "systemSet"
+      ]
     },
     {
       "uu_id": "9FCCB070-E99F-5031-5720-F4953B9A9829",
       "userName": "admin123456",
       "password": "2517119123aA",
       "mobile": 18170210033,
-      "now_token": ""
+      "now_token": "",
+      "avatar": "",
+      "roles": "general_admin",
+      "isAllowDeleteUSer": true,
+      "router": [
+        "index",
+        "students-management",
+        "students-statistical",
+        "students-classList",
+        "students-information",
+        "book-management",
+        "book-borrow",
+        "book-return",
+        "book-statistical",
+        "book-information",
+        "admin-management",
+        "admin-center",
+        "admin-permission",
+        "admin-userList",
+        "systemSet"
+      ]
     },
     {
       "uu_id": "f6fd7c0e-4f1d-4c2f-85fd-36639efbd869",
       "userName": "c2517119123",
       "password": "2517119123aA",
       "mobile": 18000721452,
-      "now_token": ""
+      "now_token": "",
+      "avatar": "",
+      "roles": "general_admin",
+      "isAllowDeleteUSer": true,
+      "router": [
+        "index",
+        "students-management",
+        "students-statistical",
+        "students-classList",
+        "students-information",
+        "book-management",
+        "book-borrow",
+        "book-return",
+        "book-statistical",
+        "book-information",
+        "admin-management",
+        "admin-center",
+        "admin-permission",
+        "admin-userList",
+        "systemSet"
+      ]
     },
     {
       "uu_id": "6083e4ad-9610-4e03-867e-ff9a1c80f206",
       "userName": "d2517119123",
       "password": "2517119123aA",
       "mobile": 13667962357,
-      "now_token": ""
+      "now_token": "",
+      "avatar": "",
+      "roles": "general_admin",
+      "isAllowDeleteUSer": true,
+      "router": [
+        "index",
+        "students-management",
+        "students-statistical",
+        "students-classList",
+        "students-information",
+        "book-management",
+        "book-borrow",
+        "book-return",
+        "book-statistical",
+        "book-information",
+        "admin-management",
+        "admin-center",
+        "admin-permission",
+        "admin-userList",
+        "systemSet"
+      ]
     }
   ]
 }

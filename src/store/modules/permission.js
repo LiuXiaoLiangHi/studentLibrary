@@ -16,7 +16,8 @@ export default {
         currentMenu: '' /** 当前路由，不包含http://localhost:8080/#/*/,
         control_list: [] /** 完整的权限列表 */,
         avatar: ''/** 头像 */,
-        account: ''/** 用户角色 */
+        account: '',/** 用户角色 */
+        uu_id:'' //用户id
     },
     getters: {},
     mutations: {
@@ -27,6 +28,10 @@ export default {
         //设置用户角色
         SET_ACCOUNT(state, account) {
             state.account = account
+        },
+        // 设置用户的id
+        SET_UU_ID(state,uu_id){
+            state.uu_id = uu_id
         },
         //设置可访问路由（可访问的页面）
         SET_PERMISSION(state, routes) {
@@ -57,13 +62,29 @@ export default {
         // 获取权限
         async FETCH_PERMISSION({ commit }) {
             console.log('开始获取权限');
-            let permissionList = await fetchPermission()
+            // console.log("vvvvv",this.state.permission.account==);
+            // console.log("vvvvv",this.state.permission.uu_id);
+            // console.log('data------',data);
+            let userName2=this.state.permission.account
+            let uu_id2 =this.state.permission.uu_id
+            if(userName2==''||uu_id2==''){
+                 // 从本地获取信息
+                 let  {userName,uu_id} =JSON.parse( this.state.HISTORY__LIST)
+                 console.log('xxxxx',userName);
+                 console.log('xxxxx',uu_id);
+
+                 commit('SET_ACCOUNT',userName)
+                 commit('SET_UU_ID' ,uu_id)
+            }
+            let userName=this.state.permission.account
+            let uu_id =this.state.permission.uu_id
+            let permissionList = await fetchPermission({userName,uu_id})
             // console.log(state);
             console.log("当前用户的信息如下", permissionList);
             console.log("开始设置头像与用户名");
             commit('SET_AVATAR', permissionList.avatar)
-            commit('SET_ACCOUNT', permissionList.name)
-
+            commit('SET_ACCOUNT', permissionList.userName)
+            commit('SET_UU_ID',permissionList.uu_id)
             let routes = recursionRouter(permissionList.router, dynamicRouter)
             console.log('正在过滤路由--routes---过滤后的路由', routes);
 

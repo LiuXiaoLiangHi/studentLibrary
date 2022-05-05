@@ -61,10 +61,19 @@ export default {
           Message.success("登录成功");
           // //将data中的token 赋值给变量token
           let token = data.token;
+          let userName = data.userName;
+          let uu_id = data.uu_id;
+          let userInfo={
+            token,userName,uu_id
+          }
+          console.log('----------------',userInfo);
           // //将token保持到store中
-          this.$store.commit("LOGIN_IN", token);
+          // this.$store.commit("LOGIN_IN", token);
+          this.$store.commit("LOGIN_IN", userInfo);
+          this.$store.commit("permission/SET_ACCOUNT", userName);
+          this.$store.commit("permission/SET_UU_ID", uu_id);
           // //进行路由跳转
-          this.$router.replace("/home").catch((err) => {
+          this.$router.replace("/").catch((err) => {
             console.log(err);
           });
         } catch (e) {
@@ -94,9 +103,9 @@ export default {
   display: flex;
   justify-content: space-between;
   .from_down_a {
-    color: #409EFF;
+    color: #409eff;
     &:hover {
-      color: #409EFF;
+      color: #409eff;
     }
   }
 }

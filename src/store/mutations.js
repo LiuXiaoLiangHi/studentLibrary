@@ -1,11 +1,18 @@
 export default {
     //登录将token保存在state
-    LOGIN_IN(state, token) {
-        state.UserToken = token
+    // LOGIN_IN(state, token) {
+    //     state.UserToken = token
+    // },
+    // 把用户信息
+    LOGIN_IN(state, userInfo) {
+        state.HISTORY__LIST =  JSON.stringify(userInfo)
     },
     //退出登录删除token的值
+    // LOGIN_OUT(state) {
+    //     state.UserToken = ''
+    // },
     LOGIN_OUT(state) {
-        state.UserToken = ''
+        state.HISTORY__LIST = ''
     },
     // 切换导航栏折叠的状态
     toggleNavCollapse(state) {

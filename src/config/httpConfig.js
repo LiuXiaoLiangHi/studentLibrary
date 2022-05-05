@@ -49,9 +49,12 @@ let instance = axios.create({
 // 添加请求拦截器
 instance.interceptors.request.use(
     function (config) {
+        console.log(store.state.HISTORY__LIST);
+      
         // 请求头添加token
-        if (store.state.UserToken) {
-            config.headers.Authorization = `Bearer ${store.state.UserToken}`
+        if (store.state.HISTORY__LIST) {
+            let  {token} =JSON.parse(store.state.HISTORY__LIST)
+            config.headers.Authorization = `Bearer ${token}`
         }
         return config
     },

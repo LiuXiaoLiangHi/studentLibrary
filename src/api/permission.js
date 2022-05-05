@@ -10,8 +10,10 @@ export function login(data) {
     return axios.post('/login', data)
 }
 // 得到 当前登录用户的信息
-export  function fetchPermission() {
-     return  axios.get('/info')
+export  function fetchPermission(data) {
+     return  axios.get('/info', {params:{
+         ...data
+     }})
 }
 //用户注册
 export function fetchRegister(data){

@@ -1,9 +1,14 @@
-
 import jsonwebtoken from 'jsonwebtoken'
-import { v4 as uuidv4 } from 'uuid';
+import {
+    v4 as uuidv4
+} from 'uuid';
 
-import { userDb } from './user.js'
-import { PRIVITE_KEY } from '../../config/index.js'
+import {
+    userDb
+} from './user.js'
+import {
+    PRIVITE_KEY
+} from '../../config/index.js'
 
 
 const EXPIRESD = 60 * 60 * 24 // 过期时间1天
@@ -53,13 +58,20 @@ export function readUserInfoToLogin(userName, password) {
         userInfo.forEach((element, index) => {
             if (element.userName == userName && element.password == password) {
                 if (element.now_token == "") {
-                    let token = jsonwebtoken.sign({ userName, password }, PRIVITE_KEY, { expiresIn: EXPIRESD });
+                    let token = jsonwebtoken.sign({
+                        userName,
+                        password
+                    }, PRIVITE_KEY, {
+                        expiresIn: EXPIRESD
+                    });
                     element.now_token = token
                     userDb.write()
                     resolve({
                         code: 0,
                         msg: '登录成功',
                         data: {
+                            userName,
+                            uu_id: element.uu_id,
                             token
                         }
                     })
@@ -98,9 +110,13 @@ export function registerUser(userName, password, mobile) {
                     if (index == userInfo.length - 1) {
                         userInfo.push({
                             uu_id: uuidv4(),
-                            userName: userName,
-                            password: password,
-                            mobile: mobile
+                            userName,
+                            password,
+                            mobile,
+                            now_token: "",
+                            avatar: "",
+                            roles: "general_admin",
+                            isAllowDeleteUSer: true
                         })
                         reslove({
                             code: 0,
@@ -127,25 +143,74 @@ export function registerUser(userName, password, mobile) {
  * @return {*}
  */
 export function clearNow_token(userName, uu_id) {
+    console.log(userName,'----');
+    console.log(uu_id,'----');
     return new Promise((resolve, reject) => {
         let userInfo = userDb.data.userInfo
-        userInfo.forEach((element)=>{
+        userInfo.forEach((element,index) => {
             if (element.userName === userName && element.uu_id === uu_id) {
                 resolve({
-                    code:0,
-                    msg:"ok",
-                    data:{
-                        msg:"退出成功",
-                    }
-                })  
-                element.now_token='' 
+                    code: 0,
+                    msg: "退出成功，ok"
+
+                })
+                element.now_token = ''
                 userDb.write()
-                 
-            }else{
-                console.log("----------展示不考虑不匹配的情况（盗用其他人信息）-----------");
+
+            } else {
+                if (index == userInfo.length - 1) {
+                    resolve({
+                        code: 1,
+                        msg: '您当前信息有误哦'
+                    })
+                }
             }
         })
-    
-    })
 
+    })
+}
+
+export function getUserInfo(userName, uu_id) {
+    return new Promise((resolve, reject) => {
+        let userInfo = userDb.data.userInfo
+        console.log(userName);
+        console.log(uu_id);
+        userInfo.forEach((element,index) => {
+
+
+            if (element.userName == userName && element.uu_id == uu_id) {
+                console.log('匹配成功');
+                const {
+                    uu_id,
+                    userName,
+                    mobile,
+                    avatar,
+                    roles,
+                    isAllowDeleteUSer,
+                    router
+                } = element
+                resolve({
+                    code: 0,
+                    msg: '获取用户信息成功',
+                    data: {
+                        uu_id,
+                        userName,
+                        mobile,
+                        avatar,
+                        roles,
+                        isAllowDeleteUSer,
+                        router
+                    }
+
+                })
+            } else {
+                if (index == userInfo.length - 1) {
+                    resolve({
+                        code: 1,
+                        msg: '权限不足，获取用户信息失败'
+                    })
+                }
+            }
+        })
+    })
 }
