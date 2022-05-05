@@ -1,11 +1,3 @@
-<!--
- * @Author: liang
- * @Date: 2022-04-06 16:31:53
- * @LastEditors: liang
- * @LastEditTime: 2022-04-06 19:55:32
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\home\card\generalCard.vue
--->
 <template>
   <el-card class="card">
     <div slot="header">

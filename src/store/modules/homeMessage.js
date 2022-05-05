@@ -1,7 +1,7 @@
 /*
  * @Author: liang
  * @Description:用于存放home页面从后台接口获取的数据
- *  
+ * 暂时废弃
  */
 import { getMessage,getSchedule} from '@/api/homeList'
 export default {

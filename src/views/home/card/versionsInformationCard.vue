@@ -1,12 +1,4 @@
-<!--
- * @Author: liang
- * @Date: 2022-04-06 16:16:02
- * @LastEditors: liang
- * @LastEditTime: 2022-04-07 14:32:22
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\home\card\versionsInformationCard.vue
--->
-<template>
+ <template>
   <el-card class="card">
     <p>
       当前系统版本号为

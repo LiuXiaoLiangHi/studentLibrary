@@ -54,21 +54,16 @@ export default {
       } else {
         try {
           //登录获取token
-          let data = await login({
+          let {token,userName,uu_id} = await login({
             userName: this.loginForm.userName,
             password: this.loginForm.password,
           });
           Message.success("登录成功");
-          // //将data中的token 赋值给变量token
-          let token = data.token;
-          let userName = data.userName;
-          let uu_id = data.uu_id;
+
           let userInfo={
             token,userName,uu_id
           }
-          console.log('----------------',userInfo);
-          // //将token保持到store中
-          // this.$store.commit("LOGIN_IN", token);
+          // //将登录获取的用户信息储存到本地
           this.$store.commit("LOGIN_IN", userInfo);
           this.$store.commit("permission/SET_ACCOUNT", userName);
           this.$store.commit("permission/SET_UU_ID", uu_id);

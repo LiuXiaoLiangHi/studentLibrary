@@ -21,6 +21,8 @@ server.use(middlewares)
 server.use(bodyParser.urlencoded({ extended: false }))
 server.use(bodyParser.json())
 // Add custom routes before JSON Server router
+
+// 路由验证是否有权限，------后期会分开处理 token过期和token错误的情况 
 server.use(expressJWT({
   secret: PRIVITE_KEY,
   algorithms: ['HS256'],
@@ -35,67 +37,60 @@ server.use(expressJWT({
 }).unless({
   path: ['/login', '/register'] //⽩白名单,除了了这⾥里里写的地址，其他的URL都需要验证
 }))
-//获取用户数据
+//初始化数据库-----获取用户的信息
 userInfoInit()
 // //登录接口
 server.post('/login', async (req, res) => {
   // 从请求体中获取用户名和密码
   const { userName, password } = req.body;
-  console.log( userName, password);
+  // 调用对应的方法去获取结果
   let result = await readUserInfoToLogin(userName, password)
+  // 将结果返回
   res.send(result)
 })
+// 获取用户信息接口
 server.get("/info", async (req, res, next) => {
-  
+  // 解析get请求的params参数
   let params = param2Obj(req.url)
-  console.log( param2Obj(req.url));
-  // console.log(params,"----");
+  // 获取需要获取到用户名和id
   let { userName, uu_id } = params
-  console.log(userName,"=====");
-  console.log(uu_id,"=====");
-
-  let result = await getUserInfo(userName,uu_id)
+  // 调用对应的方法去获取结果
+  let result = await getUserInfo(userName, uu_id)
+  // 将结果返回
   res.send(result)
-  // ----从数据库查找相应的数据进行返回---
-  // res.send({
-  //   "code": "0",
-  //   data: {
-  //     "avatar": "https://ts1.cn.mm.bing.net/th?id=OIP-C.ug9M_rylVDzSq9VElI-dxgHaC7&w=183&h=170&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2",
-  //     "name": "admin",
-  //     "roles": ["admin"],
-  //     "router": ["index", "students-management", "students-statistical", "students-classList", "students-information",
-  //       "book-management", "book-borrow", "book-return", "book-statistical",
-  //       "book-information", "admin-management", "admin-center",
-  //       "admin-permission", "admin-userList", "systemSet"
-  //     ]
-  //   }
-  // })
 })
 // 注册接口
 server.post('/register', async (req, res) => {
-  console.log(req.body);
+  // 从请求体中获取用户名和密码和手机号
   const { userName, mobile, password } = req.body
+  // 调用对应的方法去获取结果
   let result = await registerUser(userName, password, mobile)
+  // 将结果返回
   res.send(result)
 })
 // 修改用户信息接口只支持修改密码
 server.put('/update', async (req, res) => {
-  //     //获取需要修改的用户名与密码
+  // 从请求体中获取用户名和id和和密码和旧密码
   const { uu_id, userName, oldPassword, newPassword } = req.body;
+  // 调用对应的方法去获取结果
   let result = await changeUserPassword(uu_id, userName, oldPassword, newPassword)
+  // 将结果返回
   res.send(result)
 })
 // 退出登录接口
 server.post('/logout', async (req, res) => {
+  // 从请求体中获取用户名和id 
   const { userName, uu_id } = req.body;
-  console.log("xxxx",userName);
-  console.log("xxxx",uu_id);
-  let result = await clearNow_token(userName,uu_id)
-  console.log(result);
+  // 调用对应的方法去获取结果
+  let result = await clearNow_token(userName, uu_id)
+  // 将结果返回
   res.send(result)
 })
+
 //删除用户的接口
 // server.delete()
+
+// 服务启动在3000端口中
 server.listen(3000, () => {
   console.log('JSON Server is running in http://localhost:3000')
 })

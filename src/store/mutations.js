@@ -1,16 +1,9 @@
 export default {
-    //登录将token保存在state
-    // LOGIN_IN(state, token) {
-    //     state.UserToken = token
-    // },
-    // 把用户信息
+    // 把用户信息储存在本地
     LOGIN_IN(state, userInfo) {
         state.HISTORY__LIST =  JSON.stringify(userInfo)
     },
-    //退出登录删除token的值
-    // LOGIN_OUT(state) {
-    //     state.UserToken = ''
-    // },
+    // 清除本地用户信息
     LOGIN_OUT(state) {
         state.HISTORY__LIST = ''
     },

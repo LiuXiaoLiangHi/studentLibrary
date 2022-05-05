@@ -1,12 +1,4 @@
-<!--
- * @Author: liang
- * @Date: 2022-04-06 16:43:00
- * @LastEditors: liang
- * @LastEditTime: 2022-04-06 18:19:39
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\home\card\weatherInfoCard.vue
--->
-<template>
+ <template>
    <div id="he-plugin-standard"></div>
 </template>
 

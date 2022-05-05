@@ -1,7 +1,5 @@
-
 /*
  * 该文件的作用是导出共有的keY和私有的key
- * 
  */
 import fs from 'fs'
 import path from 'path'

@@ -1,46 +1,8 @@
-<!--
- * @Author: liang
- * @Date: 2022-03-04 16:26:31
- * @LastEditors: LAPTOP-LD525C2O
- * @LastEditTime: 2022-04-20 21:40:35
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\home\index.vue
--->
-<template>
+ <template>
   <div class="home">
     <!-- 第一个卡片 -->
     <versionsInformationCard></versionsInformationCard>
     <!--第二个卡片-->
-    <!-- 
-    <el-card class="card el-card-two">
-      <div slot="header" class="two-header">
-        <span>版本更新通知公告</span>
-        <el-popover placement="right" width="100" trigger="click" transition>
-          <el-link :underline="false" href="http://localhost:8080/#/systemSet"
-            >查看全部信息</el-link
-          >
-          <svg-icon icon-class="更多功能" slot="reference"></svg-icon>
-        </el-popover>
-
-        
-      </div>
-      <el-table :data="homeMessage.advice">
-        <el-table-column prop="s" :width="25">
-          <svg-icon icon-class="喇叭"> </svg-icon>
-
-        
-        </el-table-column>
-        <el-table-column
-          v-for="col in columns"
-          :prop="col.id"
-          :key="col.id"
-          :label="col.label"
-          :width="col.width"
-          :show-overflow-tooltip="true"
-        >
-        </el-table-column>
-      </el-table>
-    </el-card> -->
     <generalCard cardTitle="系统更新公告" :tableData="systemDate"></generalCard>
     <weatherInfoCard ></weatherInfoCard>
     <generalCard cardTitle="学生信息公告"></generalCard>

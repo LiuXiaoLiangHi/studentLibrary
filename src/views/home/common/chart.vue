@@ -2,8 +2,6 @@
  * @Author: liang
  * @Description:  home页面的echars组件
 -->
- 
- 
  <template>
   <div>
     <!-- echarts -->

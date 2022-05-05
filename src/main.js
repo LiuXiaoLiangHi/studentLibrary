@@ -16,8 +16,7 @@ Vue.use(ElementUI)
 //前置路由判断用户是否登录
 router.beforeEach((to, from, next) => {
     console.log('前置路由触发');
-    //如果在vuex内没有发现用户的信息
-    // if (!store.state.UserToken) {
+    //如果在本地内没有发现用户的信息
     if (!store.state.HISTORY__LIST) {
         console.log('当前页面匹配的路由如下（matchedd)', to.matched);
         if (to.matched.length > 0 && !to.matched.some(record => record.meta.requiresAuth)) {
@@ -32,12 +31,7 @@ router.beforeEach((to, from, next) => {
         //判断用户是否初次登录
         if (!store.state.permission.permissionList) {
             // 初次登录
-            store.dispatch('permission/FETCH_PERMISSION'
-                // {
-                //     userName: store.state.permission.account,
-                //     uu_id: store.state.permission.uu_id
-                // }
-            ).then(() => {
+            store.dispatch('permission/FETCH_PERMISSION').then(() => {
                 //信息获取成功 可以跳转自己想去的地址
                 next({ path: to.path })
             })

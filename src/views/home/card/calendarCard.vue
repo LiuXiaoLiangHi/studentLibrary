@@ -1,12 +1,4 @@
-<!--
- * @Author: liang
- * @Date: 2022-04-06 16:49:18
- * @LastEditors: liang
- * @LastEditTime: 2022-04-06 18:35:17
- * @Description: file content
- * @FilePath: \作业\my-home\src\views\home\card\calendarCard.vue
--->
-<template>
+ <template>
   <el-card class="calendar">
     <calendar :sundayStart="true"></calendar>
   </el-card>
