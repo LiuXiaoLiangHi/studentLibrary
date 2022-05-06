@@ -675,6 +675,7 @@ TweenMax.to("p", 0.5, {
 svg {
   width: 100%;
   height: 338px;
+  //  height: 258px;
   max-height: 400px;
   
 }

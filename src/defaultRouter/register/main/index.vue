@@ -156,6 +156,11 @@ export default {
     .reg-desc {
       padding-top: 50px;
       margin-bottom: 30px;
+      span {
+        font-size: 38px;
+        font-weight: 400;
+        color: #4b4b4b;
+      }
       .reg-desc-p {
         color: #fff;
         padding-left: 70px;

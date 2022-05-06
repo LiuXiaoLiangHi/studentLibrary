@@ -9,31 +9,47 @@
    |_____________________|_________________|________________|_______________________________
 -->
 <template>
-    <el-menu
-        :collapse="isSidebarNavCollapse"
-        background-color="#304156"
-        text-color="#eee"
-        active-text-color="#4dbcff"
-        :default-active="currentMenu"
-    >
-      <DynamicMenu :menuList="sidebarMenu"></DynamicMenu>
-    </el-menu>
+  <aside class="sidebar-container">
+  <el-menu
+    :collapse="isSidebarNavCollapse"
+    background-color="#304156"
+    text-color="#eee"
+    active-text-color="#4dbcff"
+    :default-active="currentMenu"
+    class="sidebar"
+  >
+    <DynamicMenu :menuList="sidebarMenu"></DynamicMenu>
+  </el-menu>
+  </aside>
 </template>
- 
+
 <script>
 import { mapState } from "vuex";
-import DynamicMenu from './dynamic-menu.vue'
+import DynamicMenu from "./dynamic-menu.vue";
 export default {
   computed: {
     ...mapState(["isSidebarNavCollapse"]),
     ...mapState("permission", ["sidebarMenu", "currentMenu"]),
   },
-    components: {
-        DynamicMenu
-    }
+  components: {
+    DynamicMenu,
+  },
 };
 </script>
 
-<style>
-
+<style lang="less" scoped>
+.sidebar {
+    width: 240px !important;
+    height: 100%;
+    background: #304156;
+    transition: all 0.25s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    overflow: hidden;
+    // flex-shrink: 0;
+     
+}
 </style>

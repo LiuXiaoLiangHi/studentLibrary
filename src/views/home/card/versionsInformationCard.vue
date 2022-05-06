@@ -4,7 +4,6 @@
       当前系统版本号为
       {{ systemVersion }}
     </p>
-    
   </el-card>
 </template>
 
@@ -20,6 +19,7 @@ export default {
 </script>
 
 <style scoped lang="less">
+ 
 p {
   background: #35495e;
   padding: 1px;

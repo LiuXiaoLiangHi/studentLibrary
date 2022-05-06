@@ -34,10 +34,10 @@ export default {
     //点击每一个tas都会触发
     handleClick(tab) {
       console.log(tab.name);
-      if(this.lastActiveName == tab.name){
-        console.log('重复点击了同一个Tab');
-      }else{
-        this.lastActiveName=tab.name
+      if (this.lastActiveName == tab.name) {
+        console.log("重复点击了同一个Tab");
+      } else {
+        this.lastActiveName = tab.name;
         this.isSvgShow(); // 切换svg的状态
       }
     },
@@ -51,11 +51,15 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.login_main_tabs_svg {
-  width: 10px !important;
-  height: 10px !important;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
+// 切换登录方式的主体结构（  //登录的主体）
+.login_main_tabs {
+  width: 100%;
+  .login_main_tabs_svg {
+    width: 10px !important;
+    height: 10px !important;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+  }
 }
 </style>

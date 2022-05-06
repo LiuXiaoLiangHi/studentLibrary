@@ -44,6 +44,7 @@ export default {
 </script>
 <style lang="less" scoped>
 @import url(~@/style/css/_mixin.less);
+//登录样式的最外层
 .login_content {
   width: 100%;
   height: 100%;
@@ -52,13 +53,14 @@ export default {
   background-size: 100% 100%;
   .ElementCenter();
   flex-direction: column;
-  //-----------卡片上方------------
+    // 登录表单上头的logo
   .login_over_top {
     width: 350px;
     height: 100px;
     background: url("~@/style/image/title.png") no-repeat;
     background-size: 100% 100%;
   }
+    //登录的主体
   .login_main {
     width: 380px;
     margin: 0 auto;

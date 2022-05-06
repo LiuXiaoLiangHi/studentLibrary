@@ -4,7 +4,7 @@
 -->
 <template>
   <!-- 头部 top -->
-  <aside class="aside__top">
+  <header class="aside__top">
     <!-- 折叠 -->
     <Hamburger></Hamburger>
     <!-- 面包屑 -->
@@ -52,7 +52,7 @@
         />
       </div>
     </div>
-  </aside>
+  </header>
 </template>
 
 <script>
@@ -110,7 +110,7 @@ export default {
   z-index: 1000;
   // 固定定位
   position: fixed;
-  left: 200px;
+  left: 240px;
   top: 0;
   right: 0;
   //切换折叠时的速度

@@ -1,11 +1,11 @@
 <template>
   <el-form :model="loginForm" ref="loginForm" :rules="loginRules" class="yyy">
     <el-form-item label="" prop="userName">
-      <el-input v-model="loginForm.userName" placeholder="用户名" prefix-icon="el-icon-user-solid" clearable required>
+      <el-input v-model.trim="loginForm.userName" placeholder="用户名" prefix-icon="el-icon-user-solid" clearable required>
       </el-input>
     </el-form-item>
     <el-form-item label="" prop="password">
-      <el-input v-model="loginForm.password" placeholder="密码" prefix-icon="el-icon-thumb" show-password clearable required>
+      <el-input v-model.trim="loginForm.password" placeholder="密码" prefix-icon="el-icon-thumb" show-password clearable required>
       </el-input>
     </el-form-item>
     <el-form-item label="">

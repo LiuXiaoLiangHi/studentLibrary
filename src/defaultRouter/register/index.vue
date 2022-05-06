@@ -16,6 +16,8 @@ export default {
 </script>
 <style lang="less" scoped>
 div {
+  display: flex;
+  flex-direction: column;
   background-color: #f3f5f8;
 }
 </style>

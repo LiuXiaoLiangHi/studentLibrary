@@ -1,0 +1,58 @@
+/*
+ * 重写elemenui的左侧导航栏的样式
+ * 侧边栏
+ */
+ .sidebar {
+     //左侧导航栏左侧一级导航的下边框
+    >div.menu-container>li.el-menu-item,
+    >div.menu-container>li.el-submenu>.el-submenu__title {
+        border-bottom: 1px solid rgba(238, 238, 238, 0.1);
+        // border-bottom: 1px solid  red;
+    }
+    // 没有子路由的导航栏的一项的样式
+    .el-menu-item {
+        background: #304156 !important;
+        // background: yellow !important;
+    }
+    /* 菜单hover时的背景 */
+    .el-submenu__title:hover,
+    .el-menu-item:hover {
+        background: #223041 !important;
+        // background: green !important;
+    }
+    // 展开后的第一项子路由的内边距
+    .el-menu-item-group__title{
+        padding: 0;
+    }
+    /* 菜单active时的背景 */
+    /* .el-menu-item.is-active {
+        background: #293748 !important;
+    } */
+}
+// 折叠后的选项的上边距
+.el-menu--vertical{
+    .el-menu-item-group__title{
+        padding: 0;
+    }
+}
+/* 折叠菜单下的样式 */
+.navCollapsed {
+    .sidebar {
+        width: 64px !important;
+        .el-submenu{
+            span{
+                display: none;
+            }
+        }
+        .el-submenu__icon-arrow {
+            display: none;
+        }
+    }
+    .aside__top {
+        left: 64px !important;
+    }
+    .main-container{
+        left: 64px !important;
+        transition:  0.5s;
+    }
+}

@@ -54,6 +54,7 @@ export default {
   background-size: 100% 100%;
   height: 100%;
   > div {
+    // display: flex;
     height: 100%;
   }
 }

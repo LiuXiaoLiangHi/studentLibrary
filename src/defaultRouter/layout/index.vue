@@ -1,8 +1,9 @@
 
 <template>
-  <div :class="{navCollapsed:isSidebarNavCollapse}">
+  <div :class="{navCollapsed:isSidebarNavCollapse}" style="display:flex">
     <!-- 左侧导航栏 -->
-    <LeftSide class="sidebar"></LeftSide>
+    <LeftSide ></LeftSide>
+    <!-- //class="sidebar" -->
     <!-- 右侧主体视图---加上top栏 -->
     <MainContent></MainContent>
    </div>
@@ -19,7 +20,8 @@ export default {
     components:{
       LeftSide,
       MainContent
-    }
+    },
+   
 }
 </script>
 
